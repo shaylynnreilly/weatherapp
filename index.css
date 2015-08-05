@@ -88,6 +88,8 @@ p {
 
 .footer {
   background-color: aliceblue;
-  float: bottom;
-  height: 80px;
+  height: 70px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
