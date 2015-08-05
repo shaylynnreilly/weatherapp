@@ -37,9 +37,9 @@
             }
         }
         function get_forecast() {
-            console.log(this.status);
-            console.log(this.readyState);
-            var response = JSON.parse(this.responseText);
+            console.log(request3.status);
+            console.log(request3.readyState);
+            var response = JSON.parse(request3.responseText);
             var count = mod_hours % 3;
             for (var i = 0; i <= count; i++) {
                 var temp = response.list[i].main.temp;
