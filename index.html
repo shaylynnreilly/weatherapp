@@ -42,6 +42,9 @@
                 var content = main.innerHTML;
                 var image = ("<img src=\"sunglasses.svg\"/>");
                 if (content.indexOf(image) == -1) {
+                    console.log(image);
+                    console.log(content);
+                    console.log(content.indexOf(image));
                     main.innerHTML = content + image;
                 }
             }
