@@ -133,11 +133,11 @@ img {
 
 @media screen and (min-device-width: 320px) and (max-device-width: 667px) {
   .header {
-    height: 350px;
+    height: 370px;
   }
   .header .container {
   	position: relative;
-  	top: 100px;
+  	top: 90px;
   }
   .header h1 {
     font-size: 90px;
@@ -164,7 +164,7 @@ img {
   	margin-bottom: 10px;
   }
   #hrs, #mins {
-  	width: 50px;
+  	width: 60px;
   }
 }
 
