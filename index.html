@@ -29,6 +29,13 @@
                 }
             }
         }
+        function insert_image(image) {
+            var main = document.getElementById("main_page");
+            var content = main.innerHTML;
+            if (content.indexOf(image) == -1) {
+                main.innerHTML = content + image;
+            }
+        }
         function get_current() {
             //pull current weather data for current location and destination and print
             var response = JSON.parse(this.responseText);
@@ -37,46 +44,26 @@
             var description = response.weather[0].description;
             var text = "There's going to be " + description + " in " + response.name;
             console.log("temp: " + temp + " condition: " + condition);
+            console.log(text);
             if (condition == "Clear") {
-                var main = document.getElementById("main_page");
-                var content = main.innerHTML;
                 var image = ("<img src=\"sunglasses.svg\">");
-                if (content.indexOf(image) == -1) {
-                    console.log(content.indexOf(image));
-                    main.innerHTML = content + image;
-                }
+                insert_image(image);
             }
             if (condition == "Rain") {
-                var main = document.getElementById("main_page");
-                var image = ("<img src=\"umbrella.png\"/>");
-                var content = main.innerHTML;
-                if (content.indexOf(image) == -1) {
-                    main.innerHTML = content + image;
-                }
+                var image = ("<img src=\"umbrella.png\">");
+                insert_image(image);
             }
             if (Number(temp) < 65) { 
-                var main = document.getElementById("main_page");
-                var image = ("<img src=\"scarf.png\"/>");
-                var content = main.innerHTML;
-                if (content.indexOf(image) == -1) {
-                    main.innerHTML = content + image;
-                }
+                var image = ("<img src=\"scarf.png\">");
+                insert_image(image);
             }
             if (condition == "Snow") { 
-                var main = document.getElementById("main_page");
-                var image = ("<img src=\"boots.png\"/>");
-                var content = main.innerHTML;
-                if (content.indexOf(image) == -1) {
-                    main.innerHTML = content + image;
-                }
+                var image = ("<img src=\"boots.png\">");
+                insert_image(image);
             }
             if (Number(temp) < 32) { 
-                var main = document.getElementById("main_page");
-                var image = ("<img src=\"mittens.png\"/>");
-                var content = main.innerHTML;
-                if (content.indexOf(image) == -1) {
-                    main.innerHTML = content + image;
-                }
+                var image = ("<img src=\"mittens.png\">");
+                insert_image(image);
             }
         }
     </script>
