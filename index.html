@@ -15,21 +15,56 @@
             main.innerHTML= content;
             var d = new Date();
             var hours = d.getHours() % 12;
-           if (((hours % 3) + Number(hrs_gone)) < 3) {
-                request = new XMLHttpRequest;
-                var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
-                request.onload = get_current;
-                request.open("GET", url, true);
-                request.send();
-                if (current_location != destination && destination != "") {
-                    request2 = new XMLHttpRequest;
-                    var url2 = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
-                    request2.onload = get_current;
-                    request2.open("GET", url2, true);
-                    request2.send();
+            var mod_hours = (hours % 3) + Number(hrs_gone);
+            request = new XMLHttpRequest;
+            var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+            request.onload = get_current;
+            request.open("GET", url, true);
+            request.send();
+            if (current_location != destination && destination != "") {
+                request2 = new XMLHttpRequest;
+                var url2 = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                request2.onload = get_current;
+                request2.open("GET", url2, true);
+                request2.send();
+            }
+            if (mod_hours > 3) {
+                request3 = new XMLHttpRequest;
+                var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                request3.onload = get_forecast(mod_hours);
+                request3.open("GET", url, true);
+                request3.send();
+            }
+        }
+        function get_forecast(mod_hours) {
+            var response = JSON.parse(this.responseText);
+            var count = mod_hours % 3;
+            for (var i = 0; i <= count; i++) {
+                var temp = response.list[i].main.temp;
+                var condition = response.list[i].weather[0].main;
+                if (condition == "Clear") {
+                    var image = ("<img src=\"sunglasses.svg\">");
+                    insert_image(image);
+                }
+                if (condition == "Rain") {
+                    var image = ("<img src=\"umbrella.png\">");
+                    insert_image(image);
+                }
+                if (Number(temp) < 65) { 
+                    var image = ("<img src=\"scarf.png\">");
+                    insert_image(image);
+                }
+                if (condition == "Snow") { 
+                    var image = ("<img src=\"boots.png\">");
+                    insert_image(image);
+                }
+                if (Number(temp) < 32) { 
+                    var image = ("<img src=\"mittens.png\">");
+                    insert_image(image);
                 }
             }
         }
+        
         function insert_image(image) {
             var main = document.getElementById("images");
             var content = main.innerHTML;
@@ -38,8 +73,6 @@
             }
         }
         function get_current() {
-            console.log(this.status);
-            console.log(this.responseText);
             //pull current weather data for current location and destination and print
             var response = JSON.parse(this.responseText);
             var temp = response.main.temp;
