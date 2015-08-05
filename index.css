@@ -115,7 +115,7 @@ img {
   	margin-right: 20px;
 }
 
-@media screen and (min-width: 668px) and (max-width: 862px) {
+@media screen and (min-width: 600px) and (max-width: 862px) {
   	#submit {
     		float: initial
     		position: relative;
@@ -133,11 +133,22 @@ img {
 
 @media screen and (min-device-width: 320px) and (max-device-width: 667px) {
   .header {
-    height: 250px;
+    height: 300px;
+  }
+  .header .container {
+  	position: relative;
+  	top: 50px;
   }
   .header h1 {
-    font-size: 40px;
+    font-size: 70px;
     line-height: 40px;
+  }
+  .header h3 {
+    font-size: 50px;
+    line-height:40px;
+  }
+  .main {
+  	font-size: 50px;
   }
   #submit {
     float: initial;
