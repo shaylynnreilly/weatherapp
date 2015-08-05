@@ -15,7 +15,7 @@
             main.innerHTML= content;
             var d = new Date();
             var hours = d.getHours() % 12;
-            var mod_hours = (hours % 3) + Number(hrs_gone);
+            mod_hours = (hours % 3) + Number(hrs_gone);
             request = new XMLHttpRequest;
             var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
             request.onload = get_current;
@@ -31,12 +31,12 @@
             if (mod_hours > 3) {
                 request3 = new XMLHttpRequest;
                 var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
-                request3.onload = get_forecast(mod_hours);
+                request3.onload = get_forecast;
                 request3.open("GET", url, true);
                 request3.send();
             }
         }
-        function get_forecast(mod_hours) {
+        function get_forecast() {
             var response = JSON.parse(this.responseText);
             var count = mod_hours % 3;
             for (var i = 0; i <= count; i++) {
