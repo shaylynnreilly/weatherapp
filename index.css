@@ -94,8 +94,9 @@ img {
   width: 100%;
 }
 
-.footer p {
-  margin-top: 25px;
+.footer .container {
+  margin-top: 12px;
   color: #444444;
   float: right;
+  margin-right: 20px;
 }
