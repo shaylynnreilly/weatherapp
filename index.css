@@ -1,0 +1,179 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Droid Sans', sans-serif;
+	font-weight: 100;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 940px; 
+	padding: 0 10px; 
+}
+
+
+/* Header */
+.header {
+  	height: 240px;
+  	text-align: center; 
+    	background-color: aliceblue;
+  	background: url("http://www.hgsitebuilder.com/files/writeable/uploads/hostgator131731/image/antum-grass-field-wallpapers.jpg") no-repeat center;
+  	-webkit-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+	text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
+}
+
+.header .container {
+	position: relative;
+	top: 10%;
+}
+
+.header h1 {
+	font-size: 60px;
+	line-height: 100px; 
+	margin-top: 0;
+	margin-bottom: 5px;
+  	color: white;
+	font-family: 'Muli', sans-serif;
+}
+
+.header h3 {
+  	margin-bottom: 10px;
+  	color: white;
+  	font-family: 'Muli', sans-serif;
+}
+
+.main .container {
+  	margin-top: 60px;
+  	margin-bottom: 10%;
+  	clear: left;
+  	clear: right;
+}
+
+#bold {
+  	font-size: 20px;
+  	text-align: left;
+}
+
+#heading {
+  	text-align: center;
+  	position: relative;
+  	top: -30px;
+}
+
+input {
+    	border: 0px;
+    	padding: 5px;
+    	background-color: #eeeeee;
+    	border-radius: 5px;
+    	margin-top: 4px;
+}
+
+img {
+  	height: 100px;
+  	width: auto;
+  	margin-top: 15px;
+  	margin-bottom: 20px;
+  	margin-left: 6%
+}
+
+.main p {
+  	margin-bottom: 10px;
+}
+
+#hrs, #mins {
+  	width: 25px;
+}
+
+#submit {
+  	float: right;
+  	font-size: 40px;
+  	position: relative;
+  	top: -90px;
+}
+
+#submit:hover {
+  	background-color: beige;
+    opacity: 0.8;
+}
+
+.footer {
+  	background-color: #555555;
+  	height: 70px;
+  	position: fixed;
+  	bottom: 0;
+  	width: 100%;
+}
+
+.footer .container {
+  	margin-top: 12px;
+  	color: #fff;
+  	float: right;
+  	margin-right: 20px;
+}
+
+@media screen and (max-width: 862px) {
+  	#submit {
+    		float: initial
+    		position: relative;
+    		top: 40px;
+    		margin-bottom: 70px;
+  	}
+  	.header h1 {
+    		font-size: 50px;
+    		line-height: 40px;
+  	}
+  	.header {
+    		height: 160px;
+  	}
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 667px) {
+  .header {
+    height: 385px;
+  }
+  .header .container {
+  	position: relative;
+  	top: 60px;
+  }
+  .header h1 {
+    font-size: 90px;
+    line-height: 100px;
+  }
+  .header h3 {
+    font-size: 50px;
+    line-height:40px;
+  }
+  .main {
+  	font-size: 50px;
+  }
+  #submit {
+    float: initial;
+    position: relative;
+    top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 60px;
+    text-align: center;
+  }
+  input {
+  	font-size: 50px;
+  	margin-bottom: 10px;
+  }
+  #hrs, #mins {
+  	width: 60px;
+  }
+  #bold {
+ 	font-size: 50px;
+  }
+  img {
+  	height: 200px;
+  }
+  #heading {
+  	margin-top: 100px;
+  }
+}

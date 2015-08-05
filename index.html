@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel ="stylesheet" type="text/css" href="index.css"/>
+    <link rel="apple-touch-icon" href="sunglasses.svg"/>
     <title>Weathering the weather</title>
     <script type="text/javascript">
         var request;
@@ -9,18 +11,97 @@
             destination = form.destination.value;
             hrs_gone = form.hrs.value;
             mins_gone = form.mins.value;
+            var bs = "<";
+            if (current_location.indexOf(bs) !== -1 || destination.indexOf(bs) !== -1 
+                || hrs_gone.indexOf(bs) !== -1 || mins_gone.indexOf(bs) !== -1) {
+                    alert("LOL nice try");
+                    throw new Error("XSS caught");
+            }
+            if (hrs_gone == "") {
+                alert("You need to put in how many hours you'll be gone");
+                throw new Error("no hours");
+            }
+            if (current_location == "") {
+                alert("You need to put in where you are now");
+                throw new Error("no current location");
+            }
             var main = document.getElementById("main_page");
-            var content = ("<p>You're in " + current_location + " going to " + destination + " for " + hrs_gone + " hours and " + mins_gone + " minutes </p>");
+            var content = "<p id=\"heading\">You're in " + current_location;
+            if (destination != "")
+                content = content + " going to " + destination;
+            content = content + " for " + hrs_gone + " hour";
+            if (hrs_gone > 1)
+                content = content + "s";
+            if (mins_gone != "")
+                content = content + " and " + mins_gone + " minutes";
+            content = content + "</p><p id=\"bold\"><b>Things you'll need:</b></p><div id=\"images\"></div>";
             main.innerHTML= content;
             var d = new Date();
             var hours = d.getHours() % 12;
+            mod_hours = (hours % 3) + Number(hrs_gone);
             request = new XMLHttpRequest;
-            console.log(hours);
-           if (((hours % 3) + hrs_gone) < 3) {
-                var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
-                request.onload = get_current;
-                request.open("GET", url, true);
-                request.send();
+            var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+            request.onload = get_current;
+            request.open("GET", url, true);
+            request.send();
+            if (current_location != destination && destination != "") {
+                request2 = new XMLHttpRequest;
+                var url2 = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                request2.onload = get_current;
+                request2.open("GET", url2, true);
+                request2.send();
+            }
+            if (mod_hours >= 3) {
+                request3 = new XMLHttpRequest;
+                var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
+                request3.onload = get_forecast;
+                request3.open("GET", url3, true);
+                request3.send();
+                if (current_location != destination && destination != "") {
+                    request4 = new XMLHttpRequest;
+                    var url4 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
+                    request4.onload = get_forecast;
+                    request4.open("GET", url4, true);
+                    request4.send();
+                }
+            }
+        }
+        function get_forecast() {
+            var response = JSON.parse(this.responseText);
+            var count = mod_hours % 3;
+            for (var i = 0; i <= count; i++) {
+                var temp = response.list[i].main.temp;
+                var condition = response.list[i].weather[0].main;
+                var time = response.list[i].dt_txt;
+                console.log("time: " + time + " future temp: " + temp + " future condition: " + condition);
+                if (condition == "Clear") {
+                    var image = ("<img src=\"sunglasses.svg\">");
+                    insert_image(image);
+                }
+                if (condition == "Rain") {
+                    var image = ("<img src=\"umbrella.png\">");
+                    insert_image(image);
+                }
+                if (Number(temp) < 65) { 
+                    var image = ("<img src=\"scarf.png\">");
+                    insert_image(image);
+                }
+                if (condition == "Snow") { 
+                    var image = ("<img src=\"boots.png\">");
+                    insert_image(image);
+                }
+                if (Number(temp) < 32) { 
+                    var image = ("<img src=\"mittens.png\">");
+                    insert_image(image);
+                }
+            }
+        }
+        
+        function insert_image(image) {
+            var main = document.getElementById("images");
+            var content = main.innerHTML;
+            if (content.indexOf(image) == -1) {
+                main.innerHTML = content + image;
             }
         }
         function get_current() {
@@ -28,7 +109,31 @@
             var response = JSON.parse(this.responseText);
             var temp = response.main.temp;
             var condition = response.weather[0].main;
-            console.log("temp: " + temp + " condition: " + condition);
+            var description = response.weather[0].description;
+            var text = "<p>" + response.name + ": " + description + ", " + temp + "°</p>";
+            if (condition == "Clear") {
+                var image = ("<img src=\"sunglasses.svg\">");
+                insert_image(image);
+            }
+            if (condition == "Rain") {
+                var image = ("<img src=\"umbrella.png\">");
+                insert_image(image);
+            }
+            if (Number(temp) < 65) { 
+                var image = ("<img src=\"scarf.png\">");
+                insert_image(image);
+            }
+            if (condition == "Snow") { 
+                var image = ("<img src=\"boots.png\">");
+                insert_image(image);
+            }
+            if (Number(temp) < 32) { 
+                var image = ("<img src=\"mittens.png\">");
+                insert_image(image);
+            }
+            var main = document.getElementById("main_page");
+            var content = main.innerHTML;
+            main.innerHTML = content + text;
         }
     </script>
 </head>
@@ -43,18 +148,19 @@
         <div class="container" id="main_page">
             <form>
                 <br/>Where are you now?
-                <input type="text" name="current_location">
+                <input type="text" name="current_location" placeholder="Enter your city">
                 <br/>Where are you going?
-                <input type="text" name="destination">
+                <input type="text" name="destination" placeholder="Optional">
                 <br/>How long will you be gone?
-                <input type="text" name="hrs"> hours <input type="text" name="mins"> minutes
+                <input type="text" name="hrs" id="hrs"> hours <input type="text" name="mins" id="mins"> minutes
                 <br/>
-                <input type="button" name="submit" Value="Tell me what I need" onClick="execute(this.form);">
+                <input type="button" name="submit" id="submit" Value="Tell me what I need" onClick="execute(this.form);">
             </form>
         </div>
     </div>
     <div class="footer">
         <div class="container">
+            <p>Shaylynn Reilly</p>
         </div>
     </div>
 </body>
