@@ -50,8 +50,19 @@ body {
 
 .main .container {
   margin-top: 90px;
-  margin-bottom: 200px;
+  //margin-bottom: 200px;
   margin-left: 5%;
+}
+
+#bold {
+  font-size: 20px;
+  text-align: left;
+}
+
+#heading {
+  text-align: center;
+  position: relative;
+  top: -30px;
 }
 
 input {
@@ -65,13 +76,13 @@ input {
 img {
   height: 100px;
   width: auto;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-bottom: 20px;
   margin-left: 6%
 }
 
 .main p {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 #hrs, #mins {
