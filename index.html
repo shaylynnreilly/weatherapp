@@ -22,7 +22,9 @@
             var content = "<p id=\"heading\">You're in " + current_location;
             if (destination != "")
                 content = content + " going to " + destination;
-            content = content + " for " + hrs_gone + " hours";
+            content = content + " for " + hrs_gone + " hour";
+            if (hrs_gone > 1)
+                content = content + "s";
             if (mins_gone != "")
                 content = content + " and " + mins_gone + " minutes";
             content = content + "</p><p id=\"bold\"><b>Things you'll need:</b></p><div id=\"images\"></div>";
