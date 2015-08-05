@@ -66,7 +66,7 @@ img {
   width: auto;
 }
 
-p {
+.main p {
   margin-top: 75px;
   margin-bottom: 30px;
 }
@@ -92,4 +92,10 @@ p {
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+.footer p {
+  margin-top: 25px;
+  color: #444444;
+  float: right;
 }
