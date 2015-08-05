@@ -30,7 +30,7 @@
             }
             if (mod_hours >= 3) {
                 request3 = new XMLHttpRequest;
-                var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
                 request3.onload = get_forecast;
                 request3.open("GET", url, true);
                 request3.send();
