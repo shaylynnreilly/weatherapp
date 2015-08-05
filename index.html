@@ -10,6 +10,12 @@
             destination = form.destination.value;
             hrs_gone = form.hrs.value;
             mins_gone = form.mins.value;
+            var bs = "<";
+            if (current_location.indexOf(bs) !== -1 || destination.indexOf(bs) !== -1 
+                || hrs_gone.indexOf(bs) !== -1 || mins_gone.indexOf(bs) !== -1) {
+                    alert("LOL nice try");
+                    throw new Error("XSS caught");
+            }
             if (hrs_gone == "") {
                 alert("You need to put in how many hours you'll be gone");
                 throw new Error("no hours");
