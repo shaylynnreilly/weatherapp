@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weathering the weather</title>
+    <script type="text/javascript">
+        var request;
+        function execute(form) {
+            current_location = form.current_location.value;
+            destination = form.destination.value;
+            hrs_gone = form.hrs.value;
+            mins_gone = form.mins.value;
+            var main = document.getElementById("main_page");
+            var content = ("<p>You're in " + current_location + " going to " + destination + " for " + hrs_gone + " hours and " + mins_gone + " minutes </p>");
+            main.innerHTML= content;
+            var d = new Date();
+            var hours = d.getHours() % 12;
+            request = new XMLHttpRequest;
+            console.log(hours);
+           if (((hours % 3) + hrs_gone) < 3) {
+                var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                request.onload = get_current;
+                request.open("GET", url, true);
+                request.send();
+            }
+        }
+        function get_current() {
+            //pull current weather data for current location and destination and print
+            var response = JSON.parse(this.responseText);
+            var temp = response.main.temp;
+            var condition = response.weather[0].main;
+            console.log("temp: " + temp + " condition: " + condition);
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Weathering the weather</h1>
+            <h3>Helping you prepare for the worst</h3>
+        </div>
+    </div>
+    <div class="main">
+        <div class="container" id="main_page">
+            <form>
+                <br/>Where are you now?
+                <input type="text" name="current_location">
+                <br/>Where are you going?
+                <input type="text" name="destination">
+                <br/>How long will you be gone?
+                <input type="text" name="hrs"> hours <input type="text" name="mins"> minutes
+                <br/>
+                <input type="button" name="submit" Value="Tell me what I need" onClick="execute(this.form);">
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+        </div>
+    </div>
+</body>
+</html>
