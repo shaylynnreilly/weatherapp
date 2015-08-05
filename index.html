@@ -45,7 +45,7 @@
             var temp = response.main.temp;
             var condition = response.weather[0].main;
             var description = response.weather[0].description;
-            var text = "<p>" + response.name + ": " + description + "</p>";
+            var text = "<p>" + response.name + ": " + description + ", " + temp + "°</p>";
             console.log("temp: " + temp + " condition: " + condition);
             console.log(text);
             if (condition == "Clear") {
