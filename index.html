@@ -10,6 +10,12 @@
             destination = form.destination.value;
             hrs_gone = form.hrs.value;
             mins_gone = form.mins.value;
+            if (hrs_gone == "") {
+                alert("You need to know how many hours you'll be gone");
+            }
+            if (current_location == "") {
+                alert("Where are you now?");
+            }
             var main = document.getElementById("main_page");
             var content = ("<p id=\"heading\">You're in " + current_location + " going to " + destination + " for " + hrs_gone + " hours and " + mins_gone + " minutes </p><p id=\"bold\"><b>Things you'll need:</b></p><div id=\"images\"></div>");
             main.innerHTML= content;
@@ -34,6 +40,13 @@
                 request3.onload = get_forecast;
                 request3.open("GET", url3, true);
                 request3.send();
+                if (current_location != destination && destination != "") {
+                    request4 = new XMLHttpRequest;
+                    var url4 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
+                    request4.onload = get_forecast;
+                    request4.open("GET", url4, true);
+                    request4.send();
+                }
             }
         }
         function get_forecast() {
@@ -42,7 +55,8 @@
             for (var i = 0; i <= count; i++) {
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].main;
-                console.log("future temp: " + temp + " future condition: " + condition);
+                var time = response.list[i].dt_txt;
+                console.log("time: " + time + " future temp: " + temp + " future condition: " + condition);
                 if (condition == "Clear") {
                     var image = ("<img src=\"sunglasses.svg\">");
                     insert_image(image);
