@@ -41,13 +41,41 @@
                 var main = document.getElementById("main_page");
                 var content = main.innerHTML;
                 var image = ("<img src=\"sunglasses.svg\"/>");
-                main.innerHTML= content + image;
+                if (content.indexOf(image) == -1) {
+                    main.innerHTML = content + image;
+                }
             }
             if (condition == "Rain") {
                 var main = document.getElementById("main_page");
                 var image = ("<img src=\"umbrella.png\"/>");
                 var content = main.innerHTML;
-                main.innerHTML = content + image;
+                if (content.indexOf(image) == -1) {
+                    main.innerHTML = content + image;
+                }
+            }
+            if (Number(temp) < 65) { 
+                var main = document.getElementById("main_page");
+                var image = ("<img src=\"scarf.png\"/>");
+                var content = main.innerHTML;
+                if (content.indexOf(image) == -1) {
+                    main.innerHTML = content + image;
+                }
+            }
+            if (condition == "Snow") { 
+                var main = document.getElementById("main_page");
+                var image = ("<img src=\"boots.png\"/>");
+                var content = main.innerHTML;
+                if (content.indexOf(image) == -1) {
+                    main.innerHTML = content + image;
+                }
+            }
+            if (Number(temp) < 32) { 
+                var main = document.getElementById("main_page");
+                var image = ("<img src=\"mittens.png\"/>");
+                var content = main.innerHTML;
+                if (content.indexOf(image) == -1) {
+                    main.innerHTML = content + image;
+                }
             }
         }
     </script>
