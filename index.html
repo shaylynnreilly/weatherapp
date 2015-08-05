@@ -38,15 +38,14 @@
             }
         }
         function get_current() {
+            console.log(this.status);
+            console.log(this.responseText);
             //pull current weather data for current location and destination and print
             var response = JSON.parse(this.responseText);
             var temp = response.main.temp;
             var condition = response.weather[0].main;
             var description = response.weather[0].description;
             var text = "<p>" + response.name + ": " + description + "</p>";
-            //var main = document.getElementById("main_page");
-            //var content = main.innerHTML;
-            //main.innerHTML = content + text;
             console.log("temp: " + temp + " condition: " + condition);
             console.log(text);
             if (condition == "Clear") {
@@ -69,6 +68,9 @@
                 var image = ("<img src=\"mittens.png\">");
                 insert_image(image);
             }
+            var main = document.getElementById("main_page");
+            var content = main.innerHTML;
+            main.innerHTML = content + text;
         }
     </script>
 </head>
