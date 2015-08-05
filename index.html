@@ -42,6 +42,7 @@
             for (var i = 0; i <= count; i++) {
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].main;
+                console.log("future temp: " + temp + " future condition: " + condition);
                 if (condition == "Clear") {
                     var image = ("<img src=\"sunglasses.svg\">");
                     insert_image(image);
