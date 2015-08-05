@@ -11,7 +11,7 @@
             hrs_gone = form.hrs.value;
             mins_gone = form.mins.value;
             var main = document.getElementById("main_page");
-            var content = ("<p>You're in " + current_location + " going to " + destination + " for " + hrs_gone + " hours and " + mins_gone + " minutes <br/>Things you'll need:</p><div id=\"images\"></div>");
+            var content = ("<p>You're in " + current_location + " going to " + destination + " for " + hrs_gone + " hours and " + mins_gone + " minutes <br/><b>Things you'll need:</b></p><div id=\"images\"></div>");
             main.innerHTML= content;
             var d = new Date();
             var hours = d.getHours() % 12;
