@@ -9,13 +9,13 @@
             destination = form.destination.value;
             hrs_gone = form.hrs.value;
             mins_gone = form.mins.value;
-            var main = document.getElementById("main_page");
-            var content = ("<p>You're in " + current_location + " going to " + destination + " for " + hrs_gone + " hours and " + mins_gone + " minutes </p>");
-            main.innerHTML= content;
+            //var main = document.getElementById("main_page");
+            //var content = ("<p>You're in " + current_location + " going to " + destination + " for " + hrs_gone + " hours and " + mins_gone + " minutes </p>");
+            //main.innerHTML= content;
             var d = new Date();
             var hours = d.getHours() % 12;
             request = new XMLHttpRequest;
-            console.log(hours);
+            console.log((hours % 3) + hrs_gone);
            if (((hours % 3) + hrs_gone) < 3) {
                 var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
                 request.onload = get_current;
@@ -29,6 +29,12 @@
             var temp = response.main.temp;
             var condition = response.weather[0].main;
             console.log("temp: " + temp + " condition: " + condition);
+           // if (condition == "Clear") {
+                var main = document.getElementById("main_page");
+                var heading = ("<p>You're in " + current_location + " going to " + destination + " for " + hrs_gone + " hours and " + mins_gone + " minutes </p>");
+                var image = ("<img src=\"sunglasses.svg\"/>");
+                main.innerHTML= heading + image;
+            //}
         }
     </script>
 </head>
