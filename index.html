@@ -19,7 +19,13 @@
                 throw new Error("no current location");
             }
             var main = document.getElementById("main_page");
-            var content = ("<p id=\"heading\">You're in " + current_location + " going to " + destination + " for " + hrs_gone + " hours and " + mins_gone + " minutes </p><p id=\"bold\"><b>Things you'll need:</b></p><div id=\"images\"></div>");
+            var content = "<p id=\"heading\">You're in " + current_location;
+            if (destination != "")
+                content = content + " going to " + destination;
+            content = content + " for " + hrs_gone + " hours";
+            if (minutes != "")
+                content = content + " and " + mins_gone + " minutes";
+            content = content + "</p><p id=\"bold\"><b>Things you'll need:</b></p><div id=\"images\"></div>");
             main.innerHTML= content;
             var d = new Date();
             var hours = d.getHours() % 12;
