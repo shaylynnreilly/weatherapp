@@ -1,0 +1,67 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Droid Sans', sans-serif;
+	font-weight: 100;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 940px; 
+	padding: 0 10px; 
+}
+
+
+/* Header */
+.header {
+  	height: 220px;
+  	text-align: center; 
+    background-color: black;
+  	//background: url() no-repeat center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+	text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
+}
+
+.header .container {
+	position: relative;
+	top: 50px;
+}
+
+.header h1 {
+	font-size: 60px;
+	line-height: 100px; 
+	margin-top: 0;
+	margin-bottom: 5px;
+  	color: white;
+	font-family: 'Muli', sans-serif;
+}
+
+.header h3 {
+  margin-bottom: 10px;
+  color: white;
+  font-family: 'Muli', sans-serif;
+}
+
+input {
+    border: 0px;
+    padding: 5px;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    margin-top: 4px;
+}
+
+img {
+  height: 100px;
+  width: auto;
+}
+
+p {
+  margin-top: 75px;
+  margin-bottom: 30px;
+}
