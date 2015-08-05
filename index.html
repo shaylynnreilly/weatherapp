@@ -44,9 +44,9 @@
             var condition = response.weather[0].main;
             var description = response.weather[0].description;
             var text = "<p>" + response.name + ": " + description + "</p>";
-            var main = document.getElementById("main_page");
-            var content = main.innerHTML;
-            main.innerHTML = content + text;
+            //var main = document.getElementById("main_page");
+            //var content = main.innerHTML;
+            //main.innerHTML = content + text;
             console.log("temp: " + temp + " condition: " + condition);
             console.log(text);
             if (condition == "Clear") {
