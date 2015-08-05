@@ -15,6 +15,7 @@
             var d = new Date();
             var hours = d.getHours() % 12;
             request = new XMLHttpRequest;
+            console.log(hours%3);
             console.log((hours % 3) + hrs_gone);
            if (((hours % 3) + hrs_gone) < 3) {
                 var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
