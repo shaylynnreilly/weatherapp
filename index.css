@@ -115,7 +115,7 @@ img {
   	margin-right: 20px;
 }
 
-@media screen and (min-width: 600px) and (max-width: 862px) {
+@media screen and (max-width: 862px) {
   	#submit {
     		float: initial
     		position: relative;
