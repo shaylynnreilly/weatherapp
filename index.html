@@ -65,6 +65,9 @@
                     request4.send();
                 }
             }
+            content = main.innerHTML;
+            var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weather\">Let's try again</a></div>";
+            main.innerHTML = content + button;
         }
         function get_forecast() {
             var response = JSON.parse(this.responseText);
