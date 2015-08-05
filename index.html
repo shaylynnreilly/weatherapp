@@ -11,10 +11,10 @@
             hrs_gone = form.hrs.value;
             mins_gone = form.mins.value;
             if (hrs_gone == "") {
-                alert("You need to know how many hours you'll be gone");
+                throw new Error("You need to put in how many hours you'll be gone");
             }
             if (current_location == "") {
-                alert("Where are you now?");
+                throw new Error("You need to put in where you are now");
             }
             var main = document.getElementById("main_page");
             var content = ("<p id=\"heading\">You're in " + current_location + " going to " + destination + " for " + hrs_gone + " hours and " + mins_gone + " minutes </p><p id=\"bold\"><b>Things you'll need:</b></p><div id=\"images\"></div>");
