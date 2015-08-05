@@ -20,7 +20,7 @@ body {
   	height: 200px;
   	text-align: center; 
     	background-color: aliceblue;
-  	/*background: url() no-repeat center;*/
+  	background: url("http://api.ning.com/files/Ov90wJC7zCxlkSYyfxYfeZJSAjRI3Oths2K71huI9nT7UP-OMzqXUvaG2WLFPniyIW4-MW0C4UFstSyLutJ1vTRzgyqZzJgl/BeachBlueSkySunSet.jpg") no-repeat center;
   	-webkit-background-size: cover;
   	-o-background-size: cover;
   	background-size: cover;
