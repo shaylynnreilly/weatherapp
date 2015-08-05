@@ -43,7 +43,10 @@
             var temp = response.main.temp;
             var condition = response.weather[0].main;
             var description = response.weather[0].description;
-            var text = "There's going to be " + description + " in " + response.name;
+            var text = "<p>" + response.name + ": " + description + "</p>";
+            var main = document.getElementById("main_page");
+            var content = main.innerHTML;
+            main.innerHTML = content + text;
             console.log("temp: " + temp + " condition: " + condition);
             console.log(text);
             if (condition == "Clear") {
