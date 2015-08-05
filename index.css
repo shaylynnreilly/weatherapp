@@ -17,10 +17,10 @@ body {
 
 /* Header */
 .header {
-  	height: 200px;
+  	height: 240px;
   	text-align: center; 
     	background-color: aliceblue;
-  	background: url("http://api.ning.com/files/Ov90wJC7zCxlkSYyfxYfeZJSAjRI3Oths2K71huI9nT7UP-OMzqXUvaG2WLFPniyIW4-MW0C4UFstSyLutJ1vTRzgyqZzJgl/BeachBlueSkySunSet.jpg") no-repeat center;
+  	background: url("http://www.hgsitebuilder.com/files/writeable/uploads/hostgator131731/image/antum-grass-field-wallpapers.jpg") no-repeat center;
   	-webkit-background-size: cover;
   	-o-background-size: cover;
   	background-size: cover;
@@ -48,7 +48,7 @@ body {
 }
 
 .main .container {
-  	margin-top: 10%;
+  	margin-top: 60px;
   	margin-bottom: 10%;
   	clear: left;
   	clear: right;
@@ -97,11 +97,12 @@ img {
 }
 
 #submit:hover {
-  	background-color: aliceblue;
+  	background-color: beige;
+    opacity: 0.8;
 }
 
 .footer {
-  	background-color: aliceblue;
+  	background-color: #555555;
   	height: 70px;
   	position: fixed;
   	bottom: 0;
@@ -110,7 +111,7 @@ img {
 
 .footer .container {
   	margin-top: 12px;
-  	color: #444444;
+  	color: #fff;
   	float: right;
   	margin-right: 20px;
 }
@@ -176,4 +177,3 @@ img {
   	margin-top: 100px;
   }
 }
-
