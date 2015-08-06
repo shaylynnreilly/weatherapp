@@ -73,7 +73,7 @@ body {
   }
   .footer a:hover {
   	color: beige;
-  	text-decoration: underline;
+  	font-weight: bold;
   }
 /*elements before AJAX*/
 
@@ -238,7 +238,7 @@ a {
   }
   .footer a {
   	position: relative;
-  	top: 2px;
+  	top: -15px;
   }
 }
 
