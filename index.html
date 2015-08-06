@@ -180,7 +180,7 @@
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].description;
                 //gets EST time from london time
-                var EST_time = Number(response.list[i].dt) - (5 * 60 * 60);
+                var EST_time = (Number(response.list[i].dt) - (5 * 60 * 60)) * 1000; 
                 console.log(EST_time);
                 var date = new Date(EST_time);
                 content = main.innerHTML;
