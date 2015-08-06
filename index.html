@@ -175,8 +175,8 @@
             button_page.innerHTML = "";
             var main = document.getElementById("main_page");
             var content = "";
-            var bold = document.getElementById("bold");
-            bold.innerHTML = city + "'s forecast:";
+            var new_heading = document.getElementById("new_heading");
+            new_heading.innerHTML = "<p>" + city + "'s forecast:</p>";
             //main.innerHTML = "<p id='forecast_header'><b>" + city + "'s forecast:</b></p><ul class=\"forecast_list\">";
             main.innerHTML = "<ul>";
             for (var i = 0; i <= count; i++) {
@@ -259,6 +259,8 @@
             <h1>Weathering the weather</h1>
             <h3>Helping you prepare for the worst</h3>
         </div>
+    </div>
+    <div id="new_heading">
     </div>
     <div class="main">
         <div class="container" id="main_page">
