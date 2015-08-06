@@ -208,4 +208,7 @@ a {
   #heading {
   	margin-top: 100px;
   }
+  .button {
+  	font-size: 50px;
+  }
 }
