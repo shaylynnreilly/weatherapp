@@ -65,6 +65,11 @@ body {
   	top: -30px;
 }
 
+form {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
 input {
     	border: 0px;
     	padding: 5px;
