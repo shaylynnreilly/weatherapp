@@ -161,6 +161,10 @@
                 var bold = document.getElementById("bold");
                 bold.innerHTML = "<b>Looks like you're all set!</b>";
             }
+            else if (content.indexOf("Looks like you're") == -1) {
+                var bold = document.getElementById("bold");
+                bold.innerHTML = "<b>Things you'll need:</b>";
+            }
         }
         //inserts return button that refreshes page
         function insert_button(){
