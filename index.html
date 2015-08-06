@@ -69,7 +69,7 @@
                 request2.send();
             }
             if (mod_hours >= 3) {
-                generate_forecast(false);
+                generate_forecast("false");
             }
             insert_button();
         }
@@ -235,7 +235,7 @@
         }
         //inserts return button that refreshes page
         function insert_button(){
-            var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weatherapp\">Let's try again</a></div><br><div class=\"button\" id=\"second\" onClick=\"generate_forecast(true)\">Get full forecast</div>";
+            var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weatherapp\">Let's try again</a></div><br><div class=\"button\" id=\"second\" onClick=\"generate_forecast(\"true\")\">Get full forecast</div>";
             var body = document.getElementById("button_id");
             body.innerHTML = button;
         }
