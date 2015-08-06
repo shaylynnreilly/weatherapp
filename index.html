@@ -181,7 +181,8 @@
                 var condition = response.list[i].weather[0].description;
                 var EST_time = Number(response.list[i].dt) - 21600;
                 console.log(EST_time);
-                var date = new Date(EST_time * 1000);
+                EST_time = EST_time * 1000;
+                var date = new Date(EST_time);
                 content = main.innerHTML;
                 var month = date.getMonth();
                 if (month == 0)
