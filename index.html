@@ -5,7 +5,6 @@
     <link rel="apple-touch-icon" href="sun.png"/>
     <title>Weathering the weather</title>
     <script type="text/javascript">
-        var request;
         function execute(form) {
             //assign variables
             current_location = form.current_location.value;
@@ -74,6 +73,7 @@
                     request4.send();
                 }
             }
+            console.log("test");
             if (request.status == 200 && request.readyState ==4) {
                 console.log("here");
                 insert_button();
