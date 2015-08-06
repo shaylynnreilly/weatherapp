@@ -133,14 +133,17 @@
             }
             var main = document.getElementById("main_page");
             var content = main.innerHTML;
-            main.innerHTML = content + text;
+            main.innerHTML = content + text + button;
             insert_button();
         }
         function insert_button(){
             var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weatherapp\">Let's try again</a></div>";
             var body = document.getElementById("main_page");
             var content = body.innerHTML;
+            console.log(button);
+            console.log(content);
             content.replace(button, "");
+            console.log(content);
             body.innerHTML = content + button;
         }
     </script>
