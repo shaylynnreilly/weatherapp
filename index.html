@@ -52,7 +52,7 @@
             //get hours to figure out how far into forecast you need
             var d = new Date();
             var hours = d.getHours() % 12;
-            mod_hours = (hours % 3) + Number(hrs_gone);
+            mod_hours = (hours % 3) + Math.floor(Number(hrs_gone) / 3);
             
             //request 1 = current location current weather
             request = new XMLHttpRequest;
@@ -169,7 +169,7 @@
         }
         function print_forecast() {
             var response = JSON.parse(this.responseText);
-            var count = mod_hours % 3;
+            var count = mod_hours;
             var city = response.city.name;
             var button_page = document.getElementById("button_id");
             button_page.innerHTML = "";
