@@ -91,7 +91,7 @@
             var sunset = response.sys.sunset;
             var date = new Date()
             date = Number(date);
-            date = floor(date / 100);
+            date = Math.floor(date / 100);
             //prints images into html
             if (condition == "Clear" && date < sunset) {
                 var image = ("<img src=\"sunglasses.svg\">");
