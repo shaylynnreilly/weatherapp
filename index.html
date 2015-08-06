@@ -175,7 +175,7 @@
             button_page.innerHTML = "";
             var main = document.getElementById("main_page");
             var content = "";
-            main.innerHTML = "<p id='forecast_header'><b><i>" + city + "'s forecast:</i></b></p>";
+            main.innerHTML = "<p id='forecast_header'><b>" + city + "'s forecast:</b></p>";
             for (var i = 0; i <= count; i++) {
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].description;
@@ -242,7 +242,7 @@
         }
         //inserts return button that refreshes page
         function insert_button(){
-            var button = "<div class='button'><a href='http://shaylynnreilly.github.io/weatherapp'>Let's try again</a></div><br><div class='button' id='second' onClick='generate_forecast()'>Get full forecast</div>";
+            var button = "<div class='button'><a href='http://shaylynnreilly.github.io/weatherapp'>Let's try again</a></div><div class='button' id='second' onClick='generate_forecast()'>Get full forecast</div>";
             var body = document.getElementById("button_id");
             body.innerHTML = button;
         }
