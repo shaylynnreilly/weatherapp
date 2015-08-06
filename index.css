@@ -248,6 +248,7 @@ a {
 	}
 	.main {
 		position: relative;
-		top: -20px;
+		top: -28px;
+		font-size: 45px;
 	}
 }
