@@ -180,7 +180,8 @@ a {
   }
   .header h1 {
     font-size: 150px;
-    line-height: 100px;
+    line-height: 120px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   }
   .header h3 {
     font-size: 50px;
@@ -213,6 +214,10 @@ a {
   }
   #heading {
   	margin-top: 100px;
+  }
+  .main p {
+  	margin-top: 20px;
+  	margin-bottom: 20px;
   }
   .button {
   	font-size: 50px;
