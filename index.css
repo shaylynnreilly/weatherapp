@@ -152,7 +152,7 @@ a {
   width: 300px;
   font-size: 30px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #second {
@@ -165,7 +165,12 @@ a {
     		float: initial
     		position: relative;
     		top: 40px;
-    		margin-bottom: 70px;
+  	}
+  	#submit {
+  		margin-bottom: 70px;
+  	}
+  	#second {
+  		margin-bottom: 70px;
   	}
   	.header h1 {
     		font-size: 50px;
