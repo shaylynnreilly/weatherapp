@@ -76,9 +76,7 @@
         
         
         function generate_forecast(button) {
-            console.log("generate forecast");
             //request 3 = current location future weather
-            console.log(current_location);
             request3 = new XMLHttpRequest;
             var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
             if (button == "false")
@@ -142,7 +140,6 @@
             var response = JSON.parse(this.responseText);
             var count = mod_hours % 3;
             for (var i = 0; i <= count; i++) {
-                console.log(count);
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].main;
                 var time = response.list[i].dt_txt;
@@ -171,7 +168,6 @@
             }
         }
         function print_forecast() {
-            console.log("print forecast");
             var response = JSON.parse(this.responseText);
             var count = mod_hours % 3;
             var city = response.city.name;
@@ -179,11 +175,12 @@
             button_page.innerHTML = "";
             var main = document.getElementById("main_page");
             var content = "";
-            main.innerHTML = "<b>" + city + "'s forecast:</b>";
+            main.innerHTML = "<p id='forecast_header'><b><i>" + city + "'s forecast:</i></b></p>";
             for (var i = 0; i <= count; i++) {
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].description;
                 var EST_time = Number(response.list[i].dt) - 21600;
+                console.log(EST_time);
                 var date = new Date(EST_time * 1000);
                 content = main.innerHTML;
                 var month = date.getMonth();
@@ -225,7 +222,7 @@
                     hour = 12;
                     stamp = "pm";
                 }
-                main.innerHTML = content + "<p><u>" + month + " " + day + " " + hour + " " + stamp + "</u><br/><br/>" + condition + ", " + temp + "°</p>";
+                main.innerHTML = content + "<p><u>" + month + " " + day + ", " + hour + " " + stamp + "</u><br/><br/>" + condition + ", " + temp + "°</p>";
             }
         }
         //inserts image into html
@@ -243,7 +240,6 @@
             var button = "<div class='button'><a href='http://shaylynnreilly.github.io/weatherapp'>Let's try again</a></div><br><div class='button' id='second' onClick='generate_forecast()'>Get full forecast</div>";
             var body = document.getElementById("button_id");
             body.innerHTML = button;
-            console.log(body.innerHTML);
         }
     </script>
 </head>
