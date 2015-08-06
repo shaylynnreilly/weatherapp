@@ -76,6 +76,7 @@
         
         
         function generate_forecast(button) {
+            console.log("generate forecast");
             //request 3 = current location future weather
             console.log(current_location);
             request3 = new XMLHttpRequest;
@@ -141,6 +142,7 @@
             var response = JSON.parse(this.responseText);
             var count = mod_hours % 3;
             for (var i = 0; i <= count; i++) {
+                console.log(count);
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].main;
                 var time = response.list[i].dt_txt;
@@ -238,7 +240,7 @@
         }
         //inserts return button that refreshes page
         function insert_button(){
-            var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weatherapp\">Let's try again</a></div><br><div class='button' id='second' onClick='generate_forecast('true');'>Get full forecast</div>";
+            var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weatherapp\">Let's try again</a></div><br><div class=\'button\' id=\'second\' onClick=\'generate_forecast(\'true\');\'>Get full forecast</div>";
             var body = document.getElementById("button_id");
             body.innerHTML = button;
         }
