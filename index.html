@@ -29,6 +29,11 @@
                 alert("You need to put in how many hours you'll be gone");
                 throw new Error("no hours");
             }
+            if (Number(hrs_gone) < 0) {
+                alert("ENTERING TIME WARP");
+                alert("jk, put in a real amount of time");
+                throw new Error("cannot time travel");
+            }
             
             //add heading
             var main = document.getElementById("main_page");
@@ -36,7 +41,7 @@
             if (destination != "")
                 content = content + " going to " + destination;
             content = content + " for " + hrs_gone + " hour";
-            if (hrs_gone > 1)
+            if (hrs_gone != 1)
                 content = content + "s";
             if (mins_gone != "")
                 content = content + " and " + mins_gone + " minutes";
