@@ -75,6 +75,7 @@
                 }
             }
             if (request.status == 200 && request.readyState ==4) {
+                console.log("here");
                 insert_button();
             }
         }
@@ -167,6 +168,7 @@
         }
         //inserts return button that refreshes page
         function insert_button(){
+            console.log("button");
             var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weatherapp\">Let's try again</a></div>";
             var body = document.getElementById("main_page");
             var content = body.innerHTML;
