@@ -79,7 +79,11 @@ img {
   	margin-top: 15px;
   	margin-bottom: 20px;
   	margin-right:auto;
-  margin-left: auto;
+  	margin-left: auto;
+}
+
+#images {
+  	text-align: center;
 }
 
 .main p {
@@ -159,7 +163,7 @@ a {
   	top: 60px;
   }
   .header h1 {
-    font-size: 90px;
+    font-size: 100px;
     line-height: 100px;
   }
   .header h3 {
