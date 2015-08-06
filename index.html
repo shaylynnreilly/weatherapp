@@ -74,6 +74,10 @@
                     request4.send();
                 }
             }
+            if (content.indexOf("<img src") == -1) {
+                var bold = document.getElementById("bold");
+                bold.innerHTML = "<b>Looks like you're all set!</b>";
+            }
         }
         //gets future forecast for every 3 hours
         function get_forecast() {
@@ -149,10 +153,6 @@
             var main = document.getElementById("main_page");
             var content = main.innerHTML;
             main.innerHTML = content + text;
-            if (content.indexOf("<img src") == -1) {
-                var bold = document.getElementById("bold");
-                bold.innerHTML = "<b>Looks like you're all set!</b>";
-            }
         }
         //inserts return button that refreshes page
         function insert_button(){
