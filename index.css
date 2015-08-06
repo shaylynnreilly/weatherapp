@@ -198,10 +198,10 @@ a {
     margin-right: auto;
     font-size: 60px;
     text-align: center;
+    margin-bottom: 100px;
   }
   input {
   	font-size: 50px;
-  	margin-bottom: 100px;
   }
   #hrs, #mins {
   	width: 60px;
