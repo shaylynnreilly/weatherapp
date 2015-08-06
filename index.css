@@ -233,7 +233,8 @@ a {
 
 @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
 	input {
-		margin-top: 20px;
+		position: relative;
+		top: -20px;
 	}
 	.main p {
 		margin-top: 10px;
@@ -242,10 +243,15 @@ a {
 	.header {
 		height: 350px;
 	}
+	.header .container {
+		position: relative;
+		top: -10px;
+	}
 	.header h3 {
 		margin-top: 15px;
 	}
 	.main {
-		margin-top: 20px;
+		position: relative;
+		top: -15px;
 	}
 }
