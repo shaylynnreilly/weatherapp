@@ -232,18 +232,12 @@ a {
 }
 
 @media screen and (min-device-width: 320px) and (max-device-height: 481px) {
-	input {
-	}
 	.main p {
 		margin-top: 10px;
 		margin-bottom: 10px;
 	}
 	.header {
 		height: 350px;
-	}
-	.header .container {
-		position: relative;
-		top: -4px;
 	}
 	.header h3 {
 		margin-top: 15px;
