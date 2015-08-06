@@ -55,8 +55,8 @@ body {
 }
 
 #bold {
-  	font-size: 20px;
-  	text-align: left;
+  	font-size: 24px;
+  margin-bottom: 40px;
 }
 
 #heading {
@@ -78,11 +78,13 @@ img {
   	width: auto;
   	margin-top: 15px;
   	margin-bottom: 20px;
-  	margin-left: 6%
+  	margin-right:auto;
+  margin-left: auto;
 }
 
 .main p {
   	margin-bottom: 10px;
+  text-align: center;
 }
 
 #hrs, #mins {
