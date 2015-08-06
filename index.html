@@ -241,6 +241,7 @@
                 }
                 main.innerHTML = content + "<td><u>" + month + " " + day + ", " + hour + " " + stamp + "</u><br/>" + condition + ", " + temp + "°</td>";
                 if (count2 == 0 || count2 == iterator) {
+                    content = main.innerHTML;
                     main.innerHTML = content + "</tr>";
                 }
                 count2 = count2 + 1;
