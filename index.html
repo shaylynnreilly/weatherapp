@@ -170,6 +170,8 @@
             var response = JSON.parse(this.responseText);
             var count = mod_hours % 3;
             var city = response.city.name;
+            var button_page = document.getElementById("button_id");
+            button_page.innerHTML = "";
             var main = document.getElementById("main_page");
             var content = "";
             main.innerHTML = "<b>" + city + "'s forecast:</b>";
