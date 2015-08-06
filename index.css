@@ -145,6 +145,7 @@ a {
   width: 300px;
   font-size: 30px;
   text-align: center;
+  margin-bottom: 80px;
 }
 
 /* smaller screen */
@@ -171,14 +172,14 @@ a {
 /* cellphones */
 @media screen and (min-device-width: 320px) and (max-device-width: 667px) {
   .header {
-    height: 385px;
+    height: 400px;
   }
   .header .container {
   	position: relative;
-  	top: 60px;
+  	top: 50px;
   }
   .header h1 {
-    font-size: 100px;
+    font-size: 150px;
     line-height: 100px;
   }
   .header h3 {
@@ -188,7 +189,7 @@ a {
   .main {
   	font-size: 50px;
   }
-  #submit, #button {
+  #submit {
     float: initial;
     position: relative;
     top: 60px;
@@ -215,5 +216,8 @@ a {
   }
   .button {
   	font-size: 50px;
+  	margin-left: auto;
+  	margin-right: auto;
+  	margin-top: 20px;
   }
 }
