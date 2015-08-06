@@ -73,11 +73,7 @@
                     request4.send();
                 }
             }
-            console.log("test");
-            if (request.status == 200 && request.readyState ==4) {
-                console.log("here");
-                insert_button();
-            }
+            insert_button();
         }
         //gets future forecast for every 3 hours
         function get_forecast() {
@@ -170,9 +166,8 @@
         function insert_button(){
             console.log("button");
             var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weatherapp\">Let's try again</a></div>";
-            var body = document.getElementById("main_page");
-            var content = body.innerHTML;
-            body.innerHTML = content + button;
+            var body = document.getElementById("button_id");
+            body.innerHTML = button;
         }
     </script>
 </head>
@@ -197,6 +192,7 @@
             </form>
         </div>
     </div>
+    <div id="button_id"></div>
     <div class="footer">
         <div class="container">
             <p>Shaylynn Reilly</p>
