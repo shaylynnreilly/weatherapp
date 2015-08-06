@@ -37,7 +37,7 @@
                 content = content + "s";
             if (mins_gone != "")
                 content = content + " and " + mins_gone + " minutes";
-            content = content + "</p><p id=\"bold\"><b>Things you'll need:</b></p><div id=\"images\"></div>";
+            content = content + "</p><p id=\"bold\"><b>Looks like you're all set!</b></p><div id=\"images\"></div>";
             main.innerHTML= content;
             //get hours to figure out how far into forecast you need
             var d = new Date();
@@ -75,53 +75,6 @@
             }
             insert_button();
         }
-        //gets future forecast for every 3 hours
-        function get_forecast() {
-            var response = JSON.parse(this.responseText);
-            var count = mod_hours % 3;
-            for (var i = 0; i <= count; i++) {
-                var temp = response.list[i].main.temp;
-                var condition = response.list[i].weather[0].main;
-                var time = response.list[i].dt_txt;
-                var sunset = response.sys.sunset;
-                var date = new Date()
-                date = Number(date);
-                //display images based on weather
-                if (condition == "Clear" && date < sunset) {
-                    var image = ("<img src=\"sunglasses.svg\">");
-                    insert_image(image);
-                }
-                if (condition == "Rain") {
-                    var image = ("<img src=\"umbrella.png\">");
-                    insert_image(image);
-                }
-                if (Number(temp) < 65) { 
-                    var image = ("<img src=\"scarf.png\">");
-                    insert_image(image);
-                }
-                if (condition == "Snow") { 
-                    var image = ("<img src=\"boots.png\">");
-                    insert_image(image);
-                }
-                if (Number(temp) < 32) { 
-                    var image = ("<img src=\"mittens.png\">");
-                    insert_image(image);
-                }
-            }
-            var content = document.getElementById("main_page");
-            if (content.indexOf("Looks like you're") == -1) {
-                var bold = document.getElementById("bold");
-                bold.innerHTML = "<b>Things you'll need:</b>";
-            }
-        }
-        //inserts image into html
-        function insert_image(image) {
-            var main = document.getElementById("images");
-            var content = main.innerHTML;
-            if (content.indexOf(image) == -1) {
-                main.innerHTML = content + image;
-            }
-        }
         //gets current weather condition
         function get_current() {
             //pull current weather data for current location and destination and print
@@ -157,18 +110,53 @@
             var main = document.getElementById("main_page");
             var content = main.innerHTML;
             main.innerHTML = content + text;
-            if (content.indexOf("<img src") == -1) {
-                var bold = document.getElementById("bold");
-                bold.innerHTML = "<b>Looks like you're all set!</b>";
+        }
+        //gets future forecast for every 3 hours
+        function get_forecast() {
+            var response = JSON.parse(this.responseText);
+            var count = mod_hours % 3;
+            for (var i = 0; i <= count; i++) {
+                var temp = response.list[i].main.temp;
+                var condition = response.list[i].weather[0].main;
+                var time = response.list[i].dt_txt;
+                var sunset = response.sys.sunset;
+                var date = new Date()
+                date = Number(date);
+                //display images based on weather
+                if (condition == "Clear" && date < sunset) {
+                    var image = ("<img src=\"sunglasses.svg\">");
+                    insert_image(image);
+                }
+                if (condition == "Rain") {
+                    var image = ("<img src=\"umbrella.png\">");
+                    insert_image(image);
+                }
+                if (Number(temp) < 65) { 
+                    var image = ("<img src=\"scarf.png\">");
+                    insert_image(image);
+                }
+                if (condition == "Snow") { 
+                    var image = ("<img src=\"boots.png\">");
+                    insert_image(image);
+                }
+                if (Number(temp) < 32) { 
+                    var image = ("<img src=\"mittens.png\">");
+                    insert_image(image);
+                }
             }
-            else if (content.indexOf("Looks like you're") == -1) {
-                var bold = document.getElementById("bold");
-                bold.innerHTML = "<b>Things you'll need:</b>";
+        }
+        //inserts image into html
+        function insert_image(image) {
+            var main = document.getElementById("images");
+            var content = main.innerHTML;
+            if (content.indexOf(image) == -1) {
+                main.innerHTML = content + image;
             }
+            var bold = document.getElementById("bold");
+            bold.innerHTML = "<b>Things you'll need:</b>";
         }
         //inserts return button that refreshes page
         function insert_button(){
-            console.log("button");
             var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weatherapp\">Let's try again</a></div>";
             var body = document.getElementById("button_id");
             body.innerHTML = button;
