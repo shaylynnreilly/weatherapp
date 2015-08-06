@@ -122,8 +122,11 @@
             var condition = response.weather[0].main;
             var description = response.weather[0].description;
             var text = "<p>" + response.name + ": " + description + ", " + temp + "°</p>";
+            var sunset = response.sys.sunset;
+            var date = new Date()
+            date = Number(date);
             //prints images into html
-            if (condition == "Clear") {
+            if (condition == "Clear" && date < sunset) {
                 var image = ("<img src=\"sunglasses.svg\">");
                 insert_image(image);
             }
