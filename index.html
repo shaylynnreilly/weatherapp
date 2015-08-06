@@ -50,18 +50,6 @@
                 request2.onload = get_current;
                 request2.open("GET", url2, true);
                 request2.send();
-                var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weatherapp\">Let's try again</a></div>";
-                var body = document.getElementById("main_page");
-                var content = body.innerHTML;
-                body.innerHTML = content + button;
-                console.log("here");
-            }
-            else {
-                var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weatherapp\">Let's try again</a></div>";
-                var body = document.getElementById("main_page");
-                var content = body.innerHTML;
-                body.innerHTML = content + button;
-                console.log("here");
             }
             if (mod_hours >= 3) {
                 request3 = new XMLHttpRequest;
@@ -146,7 +134,14 @@
             var main = document.getElementById("main_page");
             var content = main.innerHTML;
             main.innerHTML = content + text;
-            console.log("text");
+            insert_button();
+        }
+        function insert_button(){
+            var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weatherapp\">Let's try again</a></div>";
+            var body = document.getElementById("main_page");
+            var content = body.innerHTML;
+            content.replace(button, "");
+            body.innerHTML = content + button;
         }
     </script>
 </head>
