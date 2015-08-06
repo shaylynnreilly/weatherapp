@@ -11,6 +11,7 @@
             destination = form.destination.value;
             hrs_gone = form.hrs.value;
             mins_gone = form.mins.value;
+            
             //lazy way to prevent xss
             var bs = "<";
             if (current_location.indexOf(bs) !== -1 || destination.indexOf(bs) !== -1 
@@ -18,6 +19,7 @@
                     alert("LOL nice try");
                     throw new Error("XSS caught");
             }
+            
             //make sure essential parameters are there
             if (current_location == "") {
                 alert("You need to put in where you are now");
@@ -27,6 +29,7 @@
                 alert("You need to put in how many hours you'll be gone");
                 throw new Error("no hours");
             }
+            
             //add heading
             var main = document.getElementById("main_page");
             var content = "<p id=\"heading\">You're in " + current_location;
@@ -39,10 +42,12 @@
                 content = content + " and " + mins_gone + " minutes";
             content = content + "</p><p id=\"bold\"><b>Looks like you're all set!</b></p><div id=\"images\"></div>";
             main.innerHTML= content;
+            
             //get hours to figure out how far into forecast you need
             var d = new Date();
             var hours = d.getHours() % 12;
             mod_hours = (hours % 3) + Number(hrs_gone);
+            
             //request 1 = current location current weather
             request = new XMLHttpRequest;
             var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
@@ -86,7 +91,7 @@
             var sunset = response.sys.sunset;
             var date = new Date()
             date = Number(date);
-            console.log("date: " + date + " sunset: " + sunset);
+            date = floor(date / 100);
             //prints images into html
             if (condition == "Clear" && date < sunset) {
                 var image = ("<img src=\"sunglasses.svg\">");
