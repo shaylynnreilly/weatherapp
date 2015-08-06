@@ -74,6 +74,9 @@
                     request4.send();
                 }
             }
+            if (request.status == 200 && request.readyState ==4) {
+                insert_button();
+            }
         }
         //gets future forecast for every 3 hours
         function get_forecast() {
