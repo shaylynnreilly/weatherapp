@@ -175,7 +175,10 @@
             button_page.innerHTML = "";
             var main = document.getElementById("main_page");
             var content = "";
-            main.innerHTML = "<p id='forecast_header'><b>" + city + "'s forecast:</b></p><ul class=\"forecast_list\">";
+            var bold = document.getElementById("bold");
+            bold.innerHTML = city + "'s forecast:";
+            //main.innerHTML = "<p id='forecast_header'><b>" + city + "'s forecast:</b></p><ul class=\"forecast_list\">";
+            main.innerHTML = "<ul>";
             for (var i = 0; i <= count; i++) {
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].description;
@@ -227,7 +230,7 @@
                 if (hour == 0) {
                     hour = 12;
                 }
-                main.innerHTML = content + "<li><u>" + month + " " + day + ", " + hour + " " + stamp + "</u><br/><br/>" + condition + ", " + temp + "°</li>";
+                main.innerHTML = content + "<br><li><u>" + month + " " + day + ", " + hour + " " + stamp + "</u><br/>" + condition + ", " + temp + "°</li>";
             }
             content = main.innerHTML;
             main.innerHTML = content + "</ul>";
