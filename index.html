@@ -75,6 +75,7 @@
         }
         function generate_forecast(button) {
             //request 3 = current location future weather
+            console.log(current_location);
             request3 = new XMLHttpRequest;
             var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
             if (button == "false")
@@ -167,6 +168,7 @@
             }
         }
         function print_forecast() {
+            console.log("print forecast");
             var response = JSON.parse(this.responseText);
             var count = mod_hours % 3;
             var city = response.city.name;
