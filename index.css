@@ -152,7 +152,11 @@ a {
   width: 300px;
   font-size: 30px;
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
+}
+
+#second {
+	margin-bottom: 80px;
 }
 
 /* smaller screen */
