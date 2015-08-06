@@ -169,7 +169,7 @@
         }
         //inserts return button that refreshes page
         function insert_button(){
-            var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weatherapp\">Let's try again</a></div>";
+            var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weatherapp\">Let's try again</a></div><br><div class=\"button\" onClick=\"generate_forecast()\">Get full forecast</div>";
             var body = document.getElementById("button_id");
             body.innerHTML = button;
         }
