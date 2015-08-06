@@ -175,7 +175,7 @@
             button_page.innerHTML = "";
             var main = document.getElementById("main_page");
             var content = "";
-            main.innerHTML = "<p id='forecast_header'><b>" + city + "'s forecast:</b></p><p class=\"forecast_list\">";
+            main.innerHTML = "<p id='forecast_header'><b>" + city + "'s forecast:</b></p><ul class=\"forecast_list\">";
             for (var i = 0; i <= count; i++) {
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].description;
@@ -227,10 +227,10 @@
                 if (hour == 0) {
                     hour = 12;
                 }
-                main.innerHTML = content + "<br/><br/><u>" + month + " " + day + ", " + hour + " " + stamp + "</u><br/><br/>" + condition + ", " + temp + "°";
+                main.innerHTML = content + "<li><u>" + month + " " + day + ", " + hour + " " + stamp + "</u><br/><br/>" + condition + ", " + temp + "°</li>";
             }
             content = main.innerHTML;
-            main.innerHTML = content + "</p>";
+            main.innerHTML = content + "</ul>";
         }
         //inserts image into html
         function insert_image(image) {
