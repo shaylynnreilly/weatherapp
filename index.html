@@ -83,8 +83,11 @@
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].main;
                 var time = response.list[i].dt_txt;
+                var sunset = response.sys.sunset;
+                var date = new Date()
+                date = Number(date);
                 //display images based on weather
-                if (condition == "Clear") {
+                if (condition == "Clear" && date < sunset) {
                     var image = ("<img src=\"sunglasses.svg\">");
                     insert_image(image);
                 }
@@ -105,6 +108,7 @@
                     insert_image(image);
                 }
             }
+            var content = document.getElementById("main_page");
             if (content.indexOf("Looks like you're") == -1) {
                 var bold = document.getElementById("bold");
                 bold.innerHTML = "<b>Things you'll need:</b>";
