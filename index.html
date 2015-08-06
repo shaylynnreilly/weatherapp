@@ -86,6 +86,7 @@
             var sunset = response.sys.sunset;
             var date = new Date()
             date = Number(date);
+            console.log("date: " + date + " sunset: " + sunset);
             //prints images into html
             if (condition == "Clear" && date < sunset) {
                 var image = ("<img src=\"sunglasses.svg\">");
