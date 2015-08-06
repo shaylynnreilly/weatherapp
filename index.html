@@ -178,7 +178,7 @@
             var new_heading = document.getElementById("new_heading");
             new_heading.innerHTML = "<p>" + city + "'s forecast:</p>";
             //main.innerHTML = "<p id='forecast_header'><b>" + city + "'s forecast:</b></p><ul class=\"forecast_list\">";
-            main.innerHTML = "<div id =\"forecast_list\"><table>";
+            main.innerHTML = "<div id =\"forecast_list\"><table><tr>";
             console.log("count: " + count);
             var iterator = Math.floor(count/3);
             console.log("iterator: " + iterator);
@@ -235,8 +235,9 @@
                     hour = 12;
                 }
                 console.log("count 2: " + count2);
-                if (count2 == 0 || count2 == iterator) {
+                if (count2 == iterator) {
                     main.innerHTML = content + "<tr>";
+                    count2 = 0;
                 }
                 main.innerHTML = content + "<td><u>" + month + " " + day + ", " + hour + " " + stamp + "</u><br/>" + condition + ", " + temp + "°</td>";
                 if (count2 == 0 || count2 == iterator) {
@@ -245,7 +246,7 @@
                 count2 = count2 + 1;
             }
             content = main.innerHTML;
-            main.innerHTML = content + "</div>";
+            main.innerHTML = content + "</tr></td></div>";
         }
         //inserts image into html
         function insert_image(image) {
