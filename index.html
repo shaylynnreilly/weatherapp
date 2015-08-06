@@ -179,7 +179,9 @@
             new_heading.innerHTML = "<p>" + city + "'s forecast:</p>";
             //main.innerHTML = "<p id='forecast_header'><b>" + city + "'s forecast:</b></p><ul class=\"forecast_list\">";
             main.innerHTML = "<div id =\"forecast_list\"><table>";
+            console.log("count: " + count);
             var iterator = Math.floor(count/3);
+            console.log("iterator: " + iterator);
             var count2 = 0;
             for (var i = 0; i <= count; i++) {
                 var temp = response.list[i].main.temp;
@@ -232,6 +234,7 @@
                 if (hour == 0) {
                     hour = 12;
                 }
+                console.log("count 2: " + count2);
                 if (count2 == 0 || count2 == iterator) {
                     main.innerHTML = content + "<tr>";
                 }
