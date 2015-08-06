@@ -170,7 +170,7 @@ a {
 }
 
 /* iphone 5 and larger */
-@media screen and (min-device-width: 481px) and (max-device-width: 667px) {
+@media screen and (min-device-width: 320px) and (max-device-width: 667px) {
   .header {
     height: 400px;
   }
@@ -231,7 +231,7 @@ a {
   }
 }
 
-@media screen and (max-device-width: 480px) {
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
 	input {
 		margin-top: 20px;
 	}
