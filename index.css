@@ -239,6 +239,10 @@ a {
 	.header {
 		height: 350px;
 	}
+	.header .container {
+		position: relative;
+		top: -2px;
+	}
 	.header h3 {
 		margin-top: 15px;
 	}
