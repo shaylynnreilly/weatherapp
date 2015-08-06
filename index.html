@@ -7,24 +7,28 @@
     <script type="text/javascript">
         var request;
         function execute(form) {
+            //assign variables
             current_location = form.current_location.value;
             destination = form.destination.value;
             hrs_gone = form.hrs.value;
             mins_gone = form.mins.value;
+            //lazy way to prevent xss
             var bs = "<";
             if (current_location.indexOf(bs) !== -1 || destination.indexOf(bs) !== -1 
                 || hrs_gone.indexOf(bs) !== -1 || mins_gone.indexOf(bs) !== -1) {
                     alert("LOL nice try");
                     throw new Error("XSS caught");
             }
-            if (hrs_gone == "") {
-                alert("You need to put in how many hours you'll be gone");
-                throw new Error("no hours");
-            }
+            //make sure essential parameters are there
             if (current_location == "") {
                 alert("You need to put in where you are now");
                 throw new Error("no current location");
             }
+            if (hrs_gone == "") {
+                alert("You need to put in how many hours you'll be gone");
+                throw new Error("no hours");
+            }
+            //add heading
             var main = document.getElementById("main_page");
             var content = "<p id=\"heading\">You're in " + current_location;
             if (destination != "")
@@ -36,15 +40,18 @@
                 content = content + " and " + mins_gone + " minutes";
             content = content + "</p><p id=\"bold\"><b>Things you'll need:</b></p><div id=\"images\"></div>";
             main.innerHTML= content;
+            //get hours to figure out how far into forecast you need
             var d = new Date();
             var hours = d.getHours() % 12;
             mod_hours = (hours % 3) + Number(hrs_gone);
+            //request 1 = current location current weather
             request = new XMLHttpRequest;
             var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
             request.onload = get_current;
             request.open("GET", url, true);
             request.send();
             if (current_location != destination && destination != "") {
+                //request 2 = destination current weather
                 request2 = new XMLHttpRequest;
                 var url2 = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
                 request2.onload = get_current;
@@ -52,12 +59,14 @@
                 request2.send();
             }
             if (mod_hours >= 3) {
+                //request 3 = current location future weather
                 request3 = new XMLHttpRequest;
                 var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
                 request3.onload = get_forecast;
                 request3.open("GET", url3, true);
                 request3.send();
                 if (current_location != destination && destination != "") {
+                    //request 4 = destination future weather
                     request4 = new XMLHttpRequest;
                     var url4 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
                     request4.onload = get_forecast;
@@ -66,6 +75,7 @@
                 }
             }
         }
+        //gets future forecast for every 3 hours
         function get_forecast() {
             var response = JSON.parse(this.responseText);
             var count = mod_hours % 3;
@@ -73,7 +83,7 @@
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].main;
                 var time = response.list[i].dt_txt;
-                console.log("time: " + time + " future temp: " + temp + " future condition: " + condition);
+                //display images based on weather
                 if (condition == "Clear") {
                     var image = ("<img src=\"sunglasses.svg\">");
                     insert_image(image);
@@ -96,7 +106,7 @@
                 }
             }
         }
-        
+        //inserts image into html
         function insert_image(image) {
             var main = document.getElementById("images");
             var content = main.innerHTML;
@@ -104,6 +114,7 @@
                 main.innerHTML = content + image;
             }
         }
+        //gets current weather condition
         function get_current() {
             //pull current weather data for current location and destination and print
             var response = JSON.parse(this.responseText);
@@ -111,6 +122,7 @@
             var condition = response.weather[0].main;
             var description = response.weather[0].description;
             var text = "<p>" + response.name + ": " + description + ", " + temp + "°</p>";
+            //prints images into html
             if (condition == "Clear") {
                 var image = ("<img src=\"sunglasses.svg\">");
                 insert_image(image);
@@ -134,16 +146,12 @@
             var main = document.getElementById("main_page");
             var content = main.innerHTML;
             main.innerHTML = content + text;
-            insert_button();
         }
+        //inserts return button that refreshes page
         function insert_button(){
             var button = "<div class=\"button\"><a href=\"http://shaylynnreilly.github.io/weatherapp\">Let's try again</a></div>";
             var body = document.getElementById("main_page");
             var content = body.innerHTML;
-            console.log(button);
-            console.log(content);
-            content.replace(button, "");
-            console.log(content);
             body.innerHTML = content + button;
         }
     </script>
