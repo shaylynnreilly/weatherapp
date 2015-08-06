@@ -1,3 +1,4 @@
+/* elements in entire document */
 html, body {
 	margin: 0;
 	padding: 0;
@@ -13,7 +14,6 @@ body {
 	max-width: 940px; 
 	padding: 0 10px; 
 }
-
 
 /* Header */
 .header {
@@ -53,18 +53,22 @@ body {
   	clear: right;
 }
 
-#bold {
-  	font-size: 24px;
-  margin-bottom: 10px;
-  position: relative;
-  top: -20px;
+.footer {
+  	background-color: #555555;
+  	height: 70px;
+  	position: fixed;
+  	bottom: 0;
+  	width: 100%;
 }
 
-#heading {
-  	text-align: center;
-  	position: relative;
-  	top: -20px;
+.footer .container {
+  	margin-top: 12px;
+  	color: #fff;
+  	float: right;
+  	margin-right: 20px;
 }
+
+/*elements before AJAX*/
 
 form {
   margin-left: 50px;
@@ -77,6 +81,36 @@ input {
     	background-color: #eeeeee;
     	border-radius: 5px;
     	margin-top: 4px;
+}
+
+#hrs, #mins {
+  	width: 25px;
+}
+
+#submit{
+  	float: right;
+  	font-size: 40px;
+  	position: relative;
+  	top: -90px;
+}
+
+#submit:hover, .button:hover {
+  	background-color: beige;
+    opacity: 0.8;
+}
+
+/* elements after AJAX */
+#heading {
+  	text-align: center;
+  	position: relative;
+  	top: -20px;
+}
+
+#bold {
+  	font-size: 24px;
+  margin-bottom: 10px;
+  position: relative;
+  top: -20px;
 }
 
 img {
@@ -96,17 +130,6 @@ img {
    text-align: center;
 }
 
-#hrs, #mins {
-  	width: 25px;
-}
-
-#submit{
-  	float: right;
-  	font-size: 40px;
-  	position: relative;
-  	top: -90px;
-}
-
 a {
   text-decoration: none;
   color: black;
@@ -120,30 +143,11 @@ a {
   margin-right: auto;
   margin-left: auto;
   width: 300px;
-  font-size: 40px;
+  font-size: 30px;
   text-align: center;
 }
 
-#submit:hover, .button:hover {
-  	background-color: beige;
-    opacity: 0.8;
-}
-
-.footer {
-  	background-color: #555555;
-  	height: 70px;
-  	position: fixed;
-  	bottom: 0;
-  	width: 100%;
-}
-
-.footer .container {
-  	margin-top: 12px;
-  	color: #fff;
-  	float: right;
-  	margin-right: 20px;
-}
-
+/* smaller screen */
 @media screen and (max-width: 862px) {
   	#submit, #button {
     		float: initial
@@ -158,12 +162,13 @@ a {
   	.header {
     		height: 160px;
   	}
-  #button {
-    position: relative;
-    top: 80px;
-  }
+  	#button {
+    		position: relative;
+    		top: 80px;
+  	}
 }
 
+/* cellphones */
 @media screen and (min-device-width: 320px) and (max-device-width: 667px) {
   .header {
     height: 385px;
