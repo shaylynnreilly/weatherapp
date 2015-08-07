@@ -220,6 +220,7 @@ a {
   }
   input {
   	font-size: 50px;
+  	width: 100px;
   }
   #hrs, #mins {
   	width: 60px;
