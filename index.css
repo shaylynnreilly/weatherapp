@@ -158,8 +158,7 @@ a {
 
 #new_heading {
   text-align: center;
-  position: relative;
-  top: 30px;
+  margin-top: 10px;
 }
 
 /* smaller screen */
