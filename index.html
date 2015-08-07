@@ -61,7 +61,7 @@
             
             //request 1 = current location current weather
             request = new XMLHttpRequest;
-            if (Number(current_location) == NaN)
+            if (isNaN(Number(current_location)))
                 var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
             else
                 var url = "http://api.openweathermap.org/data/2.5/weather?zip=" + current_location + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
@@ -71,7 +71,7 @@
             if (current_location != destination && destination != "") {
                 //request 2 = destination current weather
                 request2 = new XMLHttpRequest;
-                if (Number(destination) == NaN)
+                if (isNaN(Number(destination)))
                     var url2 = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
                 else
                     var url2 = "http://api.openweathermap.org/data/2.5/weather?zip=" + destination + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
@@ -89,7 +89,7 @@
         function generate_forecast(button) {
             //request 3 = current location future weather
             request3 = new XMLHttpRequest;
-            if (Number(current_location) == NaN)
+            if (isNaN(Number(current_location)))
                 var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
             else
                 var url3 = "http://api.openweathermap.org/data/2.5/forecast?zip=" + current_location + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
@@ -103,7 +103,7 @@
             if (current_location != destination && destination != "") {
                 //request 4 = destination future weather
                 request4 = new XMLHttpRequest;
-                if (Number(destination) == NaN)
+                if (isNaN(Number(destination)))
                     var url4 = "http://api.openweathermap.org/data/2.5/forecast?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
                 else
                     var url4 = "http://api.openweathermap.org/data/2.5/forecast?zip=" + destination + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
