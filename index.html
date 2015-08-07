@@ -68,7 +68,6 @@
                 request2.open("GET", url2, true);
                 request2.send();
             }
-            console.log("mod hours: " + mod_hours);
             if (mod_hours >= 3) {
                 generate_forecast("false");
             }
@@ -82,6 +81,8 @@
             var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
             if (button == "false")
                 request3.onload = get_forecast;
+                request3.open("GET", url3, true);
+                request3.send();
             else {
                 request3.onload = print_forecast;
                 request3.open("GET", url3, true);
@@ -93,10 +94,12 @@
                 var url4 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
                 if (button == "false")
                     request4.onload = get_forecast;
+                    request4.open("GET", url4, true);
+                    request4.send();
                 else
                     request4.onload = print_forecast;
-                request4.open("GET", url4, true);
-                request4.send();
+                    request4.open("GET", url4, true);
+                    request4.send();
             }
         }
         //gets current weather condition
@@ -142,12 +145,10 @@
             var response = JSON.parse(this.responseText);
             var count = mod_hours;
             for (var i = 0; i <= count; i++) {
-                console.log("count: " + count);
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].main;
                 var date = new Date();
                 //display images based on weather
-                console.log(date.getHours());
                 if (condition == "Clear" && Number(date.getHours()) < 20) {
                     var image = ("<img src=\"sunglasses.svg\">");
                     insert_image(image);
@@ -186,7 +187,6 @@
                 var condition = response.list[i].weather[0].description;
                 //gets EST time from london time
                 var EST_time = (Number(response.list[i].dt)) * 1000; 
-                console.log(EST_time);
                 var date = new Date(EST_time);
                 content = main.innerHTML;
                 var month = date.getMonth();
