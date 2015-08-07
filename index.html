@@ -71,7 +71,7 @@
             if (mod_hours >= 3) {
                 generate_forecast("false");
             }
-            insert_button();
+            insert_button("second");
         }
         
         
@@ -206,7 +206,8 @@
                 new_heading.innerHTML = content + "<p><u>" + month + " " + day + ", " + hour + " " + stamp + "</u><br/>" + condition + ", " + temp + "°</p>";
             }
             content = new_heading.innerHTML;
-            new_heading.innerHTML = content + "<p></p></div>";
+            new_heading.innerHTML = content + "</div>";
+            insert_button();
         }
         //converts number month to text
         function month_convert(month) {
@@ -246,8 +247,11 @@
             bold.innerHTML = "<b>Things you'll need:</b>";
         }
         //inserts return button that refreshes page
-        function insert_button(){
-            var button = "<div class='button'><a href='http://shaylynnreilly.github.io/weatherapp'>Let's try again</a></div><div class='button' id='second' onClick='generate_forecast()'>Get full forecast</div>";
+        function insert_button(second){
+            var button = "<div class='button'><a href='http://shaylynnreilly.github.io/weatherapp'>Let's try again</a></div>";
+            if (second == "second") {
+                button = button + "<div class='button' id='second' onClick='generate_forecast()'>Get full forecast</div>";
+            }
             var body = document.getElementById("button_id");
             body.innerHTML = button;
         }
