@@ -175,7 +175,7 @@
             var main = document.getElementById("main_page");
             var new_heading = document.getElementById("new_heading");
             var content = new_heading.innerHTML;
-            new_heading.innerHTML = content + "<p id=\"bold\"><b>" + city + "'s forecast:</b></p><div id=\"forecast_list\">";
+            new_heading.innerHTML = content + "<br><p id=\"bold\"><b>" + city + "'s forecast:</b></p><div id=\"forecast_list\">";
             main.innerHTML = "";
             for (var i = 0; i <= count; i++) {
                 var temp = response.list[i].main.temp;
