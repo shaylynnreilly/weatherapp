@@ -173,9 +173,9 @@
             var button_page = document.getElementById("button_id");
             button_page.innerHTML = "";
             var main = document.getElementById("main_page");
-            var content = "";
             var new_heading = document.getElementById("new_heading");
-            new_heading.innerHTML = "<p id=\"bold\"><b>" + city + "'s forecast:</b></p><div id=\"forecast_list\">";
+            var content = new_heading.innerHTML;
+            new_heading.innerHTML = content + "<p id=\"bold\"><b>" + city + "'s forecast:</b></p><div id=\"forecast_list\">";
             main.innerHTML = "";
             for (var i = 0; i <= count; i++) {
                 var temp = response.list[i].main.temp;
@@ -183,7 +183,7 @@
                 //gets EST time from london time
                 var EST_time = (Number(response.list[i].dt)) * 1000; 
                 var date = new Date(EST_time);
-                content = main.innerHTML;
+                content = new_heading.innerHTML;
                 var month = date.getMonth();
                 month = month_convert(month);
                 var day = date.getDate();
