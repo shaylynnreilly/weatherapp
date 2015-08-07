@@ -36,7 +36,7 @@
                 throw new Error("cannot time travel");
             }
             console.log(Number(current_location));
-            if ((Number(current_location) != NaN && current_location.length > 5) || (Number(destination) != NaN && destination.length > 5)) {
+            if (((Number(current_location) != NaN) && (current_location.length > 5)) || ((Number(destination) != NaN) && (destination.length > 5))) {
                 alert("Please enter a valid zip code");
                 throw new Error("invalid zip")
             }
