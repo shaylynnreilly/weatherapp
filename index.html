@@ -81,25 +81,21 @@
             var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
             if (button == "false")
                 request3.onload = get_forecast;
-                request3.open("GET", url3, true);
-                request3.send();
-            else {
+            else 
                 request3.onload = print_forecast;
-                request3.open("GET", url3, true);
-                request3.send();
-            }
+            request3.open("GET", url3, true);
+            request3.send();
+            
             if (current_location != destination && destination != "") {
                 //request 4 = destination future weather
                 request4 = new XMLHttpRequest;
                 var url4 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
                 if (button == "false")
                     request4.onload = get_forecast;
-                    request4.open("GET", url4, true);
-                    request4.send();
                 else
                     request4.onload = print_forecast;
-                    request4.open("GET", url4, true);
-                    request4.send();
+                request4.open("GET", url4, true);
+                request4.send();
             }
         }
         //gets current weather condition
