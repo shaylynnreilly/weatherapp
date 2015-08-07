@@ -156,7 +156,7 @@
         //gets future forecast for every 3 hours
         function get_forecast() {
             var response = JSON.parse(this.responseText);
-            var count = Math.ceil(mod_hours / 3) - 1;
+            var count = mod_hours;
             for (var i = 0; i < count; i++) {
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].main;
@@ -187,7 +187,7 @@
         }
         function print_forecast() {
             var response = JSON.parse(this.responseText);
-            var count = Math.ceil(mod_hours / 3) - 1;
+            var count = mod_hours;
             var city = response.city.name;
             var button_page = document.getElementById("button_id");
             button_page.innerHTML = "";
