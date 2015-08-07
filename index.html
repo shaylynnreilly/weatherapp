@@ -140,10 +140,12 @@
             var response = JSON.parse(this.responseText);
             var count = mod_hours;
             for (var i = 0; i <= count; i++) {
+                console.log("count: " + count);
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].main;
                 var date = new Date();
                 //display images based on weather
+                console.log(date.getHours());
                 if (condition == "Clear" && Number(date.getHours()) < 20) {
                     var image = ("<img src=\"sunglasses.svg\">");
                     insert_image(image);
