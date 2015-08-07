@@ -57,7 +57,7 @@
             //get hours to figure out how far into forecast you need
             var d = new Date();
             var hours = d.getHours() % 12;
-            mod_hours = (hours % 3) + Math.ceil(Number(hrs_gone) / 3);
+            mod_hours = Math.floor(((hours % 3) + Number(hrs_gone)) / 3);
             
             //request 1 = current location current weather
             request = new XMLHttpRequest;
