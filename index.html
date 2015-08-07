@@ -176,13 +176,8 @@
             var main = document.getElementById("main_page");
             var content = "";
             var new_heading = document.getElementById("new_heading");
-            new_heading.innerHTML = "<p>" + city + "'s forecast:</p>";
-            //main.innerHTML = "<p id='forecast_header'><b>" + city + "'s forecast:</b></p><ul class=\"forecast_list\">";
-            main.innerHTML = "<div id =\"forecast_list\"><table><tr>";
-            console.log("count: " + count);
-            var iterator = Math.floor(count/3);
-            console.log("iterator: " + iterator);
-            var count2 = 0;
+            new_heading.innerHTML = "<p id=\"bold\"><b>" + city + "'s forecast:</b></p>";
+            main.innerHTML = "<div id =\"forecast_list\">";
             for (var i = 0; i <= count; i++) {
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].description;
@@ -192,30 +187,7 @@
                 var date = new Date(EST_time);
                 content = main.innerHTML;
                 var month = date.getMonth();
-                if (month == 0)
-                    month = "January";
-                else if (month == 1)
-                    month = "February";
-                else if (month == 2) 
-                    month = "March";
-                else if (month == 3)
-                    month = "April";
-                else if (month == 4)
-                    month = "May";
-                else if (month == 5)
-                    month = "June";
-                else if (month == 6)
-                    month = "July";
-                else if (month == 7)
-                    month = "August";
-                else if (month == 8)
-                    month = "September";
-                else if (month == 9)
-                    month = "October";
-                else if (month == 10)
-                    month = "November";
-                else if (month == 11)
-                    month = "December";
+                month = month_convert(month);
                 var day = date.getDate();
                 var hour = date.getHours() + 1;
                 var stamp = "";
@@ -225,7 +197,6 @@
                 else {
                     stamp = "pm";
                 }
-                console.log(hour);
                 if (hour == 12) 
                     stamp = "pm";
                 if (hour == 24) 
@@ -234,20 +205,37 @@
                 if (hour == 0) {
                     hour = 12;
                 }
-                console.log("count 2: " + count2);
-                if (count2 == iterator) {
-                    main.innerHTML = content + "<tr>";
-                    count2 = 0;
-                }
-                main.innerHTML = content + "<td><u>" + month + " " + day + ", " + hour + " " + stamp + "</u><br/>" + condition + ", " + temp + "°</td>";
-                if (count2 == 0 || count2 == iterator) {
-                    content = main.innerHTML;
-                    main.innerHTML = content + "</tr>";
-                }
-                count2 = count2 + 1;
+                main.innerHTML = content + "<p><u>" + month + " " + day + ", " + hour + " " + stamp + "</u><br/>" + condition + ", " + temp + "°</p>";
             }
             content = main.innerHTML;
-            main.innerHTML = content + "</tr></td></div>";
+            main.innerHTML = content + "</div>";
+        }
+        //converts number month to text
+        function month_convert(month) {
+            if (month == 0)
+                    return "January";
+                else if (month == 1)
+                    return "February";
+                else if (month == 2) 
+                    return "March";
+                else if (month == 3)
+                    return "April";
+                else if (month == 4)
+                    return "May";
+                else if (month == 5)
+                    return "June";
+                else if (month == 6)
+                    return "July";
+                else if (month == 7)
+                    return "August";
+                else if (month == 8)
+                    return "September";
+                else if (month == 9)
+                    return "October";
+                else if (month == 10)
+                    return "November";
+                else if (month == 11)
+                    return "December";
         }
         //inserts image into html
         function insert_image(image) {
