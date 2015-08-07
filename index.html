@@ -144,7 +144,7 @@
                 var condition = response.list[i].weather[0].main;
                 var date = new Date();
                 //display images based on weather
-                if (condition == "Clear" && date.getHours() < 20) {
+                if (condition == "Clear" && Number(date.getHours()) < 20) {
                     var image = ("<img src=\"sunglasses.svg\">");
                     insert_image(image);
                 }
