@@ -138,6 +138,7 @@
         }
         //gets future forecast for every 3 hours
         function get_forecast() {
+            console.log("get forecast");
             var response = JSON.parse(this.responseText);
             var count = mod_hours;
             for (var i = 0; i <= count; i++) {
