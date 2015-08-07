@@ -124,11 +124,12 @@
             var description = response.weather[0].description;
             var text = "<p>" + response.name + ": " + description + ", " + temp + "°</p>";
             var sunset = response.sys.sunset;
+            var sunrise = response.sys.sunrise;
             var date = new Date()
             date = Number(date);
             date = Math.floor(date / 1000);
             //prints images into html
-            if (condition == "Clear" && date < sunset) {
+            if (condition == "Clear" && date < sunset && date > sunrise) {
                 var image = ("<img src=\"sunglasses.svg\">");
                 insert_image(image);
             }
@@ -155,14 +156,14 @@
         //gets future forecast for every 3 hours
         function get_forecast() {
             var response = JSON.parse(this.responseText);
-            var count = mod_hours;
-            for (var i = 0; i <= count; i++) {
+            var count = Math.ceil(mod_hours / 3);
+            for (var i = 0; i < count; i++) {
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].main;
                 var EST_time = (Number(response.list[i].dt)) * 1000; 
                 var date = new Date(EST_time);
                 //display images based on weather
-                if (condition == "Clear" && Number(date.getHours()) < 20) {
+                if (condition == "Clear" && Number(date.getHours()) < 20 && Number(date.getHours()) > 5) {
                     var image = ("<img src=\"sunglasses.svg\">");
                     insert_image(image);
                 }
@@ -186,7 +187,7 @@
         }
         function print_forecast() {
             var response = JSON.parse(this.responseText);
-            var count = mod_hours;
+            var count = Math.ceil(mod_hours / 3);
             var city = response.city.name;
             var button_page = document.getElementById("button_id");
             button_page.innerHTML = "";
