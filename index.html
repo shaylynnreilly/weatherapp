@@ -89,7 +89,7 @@
             if (current_location != destination && destination != "") {
                 //request 4 = destination future weather
                 request4 = new XMLHttpRequest;
-                var url4 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
+                var url4 = "http://api.openweathermap.org/data/2.5/forecast?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
                 if (button == "false")
                     request4.onload = get_forecast;
                 else
@@ -137,7 +137,6 @@
         }
         //gets future forecast for every 3 hours
         function get_forecast() {
-            console.log("get forecast");
             var response = JSON.parse(this.responseText);
             var count = mod_hours;
             for (var i = 0; i <= count; i++) {
@@ -176,8 +175,8 @@
             var main = document.getElementById("main_page");
             var content = "";
             var new_heading = document.getElementById("new_heading");
-            new_heading.innerHTML = "<p id=\"bold\"><b>" + city + "'s forecast:</b></p>";
-            main.innerHTML = "<div id =\"forecast_list\">";
+            new_heading.innerHTML = "<p id=\"bold\"><b>" + city + "'s forecast:</b></p><div id=\"forecast_list\">;
+            main.innerHTML = "";
             for (var i = 0; i <= count; i++) {
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].description;
@@ -204,10 +203,10 @@
                 if (hour == 0) {
                     hour = 12;
                 }
-                main.innerHTML = content + "<p><u>" + month + " " + day + ", " + hour + " " + stamp + "</u><br/>" + condition + ", " + temp + "°</p>";
+                new_heading.innerHTML = content + "<p><u>" + month + " " + day + ", " + hour + " " + stamp + "</u><br/>" + condition + ", " + temp + "°</p>";
             }
-            content = main.innerHTML;
-            main.innerHTML = content + "</div>";
+            content = new_heading.innerHTML;
+            new_heading.innerHTML = content + "</div>";
         }
         //converts number month to text
         function month_convert(month) {
