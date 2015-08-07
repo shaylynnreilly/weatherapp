@@ -35,6 +35,10 @@
                 alert("jk, put in a real amount of time");
                 throw new Error("cannot time travel");
             }
+            if ((Number(current_location) != NaN && current_location.length > 5) || (Number(destination) != NaN && destination.length > 5)) {
+                alert("Please enter a valid zip code");
+                throw new Error("invalid zip")
+            }
             
             //add heading
             var main = document.getElementById("main_page");
@@ -56,14 +60,20 @@
             
             //request 1 = current location current weather
             request = new XMLHttpRequest;
-            var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+            if (Number(current_location) == NaN)
+                var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+            else
+                var url = "http://api.openweathermap.org/data/2.5/weather?zip=" + current_location + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
             request.onload = get_current;
             request.open("GET", url, true);
             request.send();
             if (current_location != destination && destination != "") {
                 //request 2 = destination current weather
                 request2 = new XMLHttpRequest;
-                var url2 = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                if (Number(destination) == NaN)
+                    var url2 = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                else
+                    var url2 = "http://api.openweathermap.org/data/2.5/weather?zip=" + destination + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
                 request2.onload = get_current;
                 request2.open("GET", url2, true);
                 request2.send();
@@ -78,7 +88,10 @@
         function generate_forecast(button) {
             //request 3 = current location future weather
             request3 = new XMLHttpRequest;
-            var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
+            if (Number(current_location) == NaN)
+                var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
+            else
+                var url3 = "http://api.openweathermap.org/data/2.5/forecast?zip=" + current_location + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
             if (button == "false")
                 request3.onload = get_forecast;
             else 
@@ -89,7 +102,10 @@
             if (current_location != destination && destination != "") {
                 //request 4 = destination future weather
                 request4 = new XMLHttpRequest;
-                var url4 = "http://api.openweathermap.org/data/2.5/forecast?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
+                if (Number(destination) == NaN)
+                    var url4 = "http://api.openweathermap.org/data/2.5/forecast?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
+                else
+                    var url = "http://api.openweathermap.org/data/2.5/forecast?zip=" + destination + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
                 if (button == "false")
                     request4.onload = get_forecast;
                 else
@@ -270,7 +286,7 @@
         <div class="container" id="main_page">
             <form>
                 <br/>Where are you now?
-                <input type="text" name="current_location" placeholder="Enter your city">
+                <input type="text" name="current_location" placeholder="Enter your city or zip code">
                 <br/>Where are you going?
                 <input type="text" name="destination" placeholder="Optional">
                 <br/>How long will you be gone?
