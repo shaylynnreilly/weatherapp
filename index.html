@@ -38,17 +38,20 @@
                 alert("jk, put in a real amount of time");
                 throw new Error("cannot time travel");
             }
-            console.log(Number(current_location));
             if ((!isNaN(Number(current_location)) && (current_location.length > 5)) || (!isNaN(Number(destination)) && (destination.length > 5))) {
                 alert("Please enter a valid zip code");
                 throw new Error("invalid zip")
             }
+            if (hrs_gone > 120) {
+                alert("That's too many hours");
+                throw new Error("hours > 5 days")
+            }
             
             //add heading
             var main = document.getElementById("main_page");
-            var content = "<p id=\"heading\">You're in " + current_location;
+            var content = "<p id=\"heading\">You're in " + capitalize(current_location);
             if (destination != "")
-                content = content + " going to " + destination;
+                content = content + " going to " + capitalize(destination);
             content = content + " for " + hrs_gone + " hour";
             if (hrs_gone != 1)
                 content = content + "s";
@@ -291,6 +294,12 @@
             }
             var body = document.getElementById("button_id");
             body.innerHTML = button;
+        }
+        /*
+         *
+         */
+        function capitalize(s) {
+            return s && s[0].toUpperCase() + s.slice(1);
         }
     </script>
 </head>
