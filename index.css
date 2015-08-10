@@ -237,6 +237,8 @@ a {
   	 margin-right: auto;
   	 font-size: 60px;
   	 text-align: center;
+  	 position: relative;
+    	top: 60px;
   }
   input {
   	font-size: 50px;
