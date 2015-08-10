@@ -283,7 +283,8 @@
                 main.innerHTML = content + image;
             }
             var bold = document.getElementById("bold");
-            bold.innerHTML = "<b>Things you'll need:</b>";
+            if (bold != null)
+                bold.innerHTML = "<b>Things you'll need:</b>";
         }
         /* 
          * inserts return button that refreshes page
