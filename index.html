@@ -304,6 +304,57 @@
         function five_day(form) {
             current_location = form.current_location.value;
             destination = form.destination.value;
+            if (current_location == "") {
+                alert("You need to put in where you are now");
+                throw new Error("no current location");
+            }
+            request = new XMLHttpRequest;
+            if (isNaN(Number(current_location)))
+                var url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+            else
+                var url = "http://api.openweathermap.org/data/2.5/forecast/daily?zip=" + current_location + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+            request.onload = get_five_day;
+            request.open("GET", url, true);
+            request.send();
+            if (current_location != destination && destination != "") {
+                //request 2 = destination current weather
+                request2 = new XMLHttpRequest;
+                if (isNaN(Number(destination)))
+                    var url2 = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                else
+                    var url2 = "http://api.openweathermap.org/data/2.5/forecast/daily?zip=" + destination + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                request2.onload = get_five_day;
+                request2.open("GET", url2, true);
+                request2.send();
+            }
+        }
+        function get_five_day() {
+            var response = JSON.parse(this.responseText);
+            var city = response.city.name;
+            var button_page = document.getElementById("button_id");
+            button_page.innerHTML = "";
+            var main = document.getElementById("main_page");
+            var new_heading = document.getElementById("new_heading");
+            var content = new_heading.innerHTML;
+            new_heading.innerHTML = content + "<br><p id=\"bold\"><b>" + city + "'s 5 day forecast:</b></p><div id=\"forecast_list\">";
+            main.innerHTML = "";
+            for (var i = 1; i <= 5; i++) {
+                var high = response.list[i].temp.max;
+                var low = response.list[i].temp.min;
+                var condition = response.list[i].weather[0].description;
+                var main_weather = response.list[i].weather[0].main;
+                //gets EST time from london time
+                var EST_time = (Number(response.list[i].dt)) * 1000; 
+                var date = new Date(EST_time);
+                content = new_heading.innerHTML;
+                var month = date.getMonth();
+                month = month_convert(month);
+                var day = date.getDate();
+                new_heading.innerHTML = content + "<p><u>" + month + " " + day + "</u><br/>" + condition + ", " + temp + "°</p>";
+            }
+            content = new_heading.innerHTML;
+            new_heading.innerHTML = content + "<p></p><p></p></div>";
+            insert_button();
         }
     </script>
 </head>
@@ -327,7 +378,7 @@
                 <input type="text" name="hrs" id="hrs" value="0"> hours <input type="text" name="mins" id="mins"> minutes
                 <br/>
                 <input type="button" name="submit" id="submit" Value="Tell me what I need" onClick="execute(this.form);">
-                <br/><input type="button" name="submit_forecast" id="submit" value="Get 5 day forecast" onClick"five_day(this.form);">
+                <p></p><input type="button" name="submit_forecast" id="submit" value="Get 5 day forecast" onClick"five_day(this.form);">
             </form>
         </div>
     </div>
