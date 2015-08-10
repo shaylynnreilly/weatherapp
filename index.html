@@ -343,7 +343,7 @@
             var main = document.getElementById("main_page");
             var new_heading = document.getElementById("new_heading");
             var content = new_heading.innerHTML;
-            new_heading.innerHTML = content + "<br><p id=\"bold\"><b>" + city + "'s 5 day forecast:</b></p><div id=\"forecast_list\">";
+            new_heading.innerHTML = content + "<br><p id=\"bold" + city + "\"><b>" + city + "'s 5 day forecast:</b></p><div id=\"forecast_list\">";
             main.innerHTML = "";
             for (var i = 1; i <= 5; i++) {
                 console.log(i);
@@ -358,7 +358,9 @@
                 var month = date.getMonth();
                 month = month_convert(month);
                 var day = date.getDate();
-                new_heading.innerHTML = content + "<p><u>" + month + " " + day + "</u><br/><div id=\"images" + city + i + "\"></div><br/>" + condition + "<br>High: " + high + "°<br>Low: " + low + "°</p>";
+                var weekday = date.getDay();
+                weekday = weekday_convert(weekday);
+                new_heading.innerHTML = content + "<p><u>" + weekday + ", " + month + " " + day + "</u><br/><div id=\"images" + city + i + "\"></div><br/>" + condition + "<br>High: " + high + "°<br>Low: " + low + "°</p>";
                 if (main_weather == "Clear") {
                     var image = ("<img src=\"sunglasses.svg\">");
                     insert_image(image, city + i);
@@ -383,9 +385,25 @@
             }
             content = new_heading.innerHTML;
             new_heading.innerHTML = content + "<p></p><p></p></div>";
-            var bold = document.getElementById("bold");
+            var bold = document.getElementById("bold" + city);
             bold.innerHTML = "<b>" + city + "'s forecast:</b>";
             insert_button();
+        }
+        function weekday_convert(weekday) {
+            if (weekday == 0) 
+                return "Sunday";
+            else if (weekday == 1) 
+                return "Monday";
+            else if (weekday == 2) 
+                return "Tuesday";
+            else if (weekday == 3) 
+                return "Wednesday";
+            else if (weekday == 4) 
+                return "Thursday";
+            else if (weekday == 5) 
+                return "Friday";
+            else if (weekday == 6) 
+                return "Saturday";
         }
     </script>
 </head>
