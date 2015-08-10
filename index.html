@@ -296,11 +296,14 @@
             body.innerHTML = button;
         }
         /*
-         *
+         * capitalizes first letter in string s
          */
         function capitalize(s) {
             return s && s[0].toUpperCase() + s.slice(1);
         }
+        /*
+         * gets five day forecast
+         */
         function five_day(form) {
             current_location = form.current_location.value;
             destination = form.destination.value;
@@ -328,6 +331,9 @@
                 request2.send();
             }
         }
+        /*
+         * prints five day forecast
+         */
         function get_five_day() {
             var response = JSON.parse(this.responseText);
             var city = response.city.name;
@@ -351,7 +357,28 @@
                 var month = date.getMonth();
                 month = month_convert(month);
                 var day = date.getDate();
-                new_heading.innerHTML = content + "<p><u>" + month + " " + day + "</u><br/>" + condition + "<br>High: " + high + "°<br>Low: " + low + "°</p>";
+                new_heading.innerHTML = content + "<p><u>" + month + " " + day + "</u><br/><div id=\"images\"></div><br/>" + condition + "<br>High: " + high + "°<br>Low: " + low + "°</p>";
+                if (main_weather == "Clear") {
+                    var image = ("<img src=\"sunglasses.svg\">");
+                    insert_image(image);
+                }
+                if (main_weather == "Rain") {
+                    var image = ("<img src=\"umbrella.png\">");
+                    insert_image(image);
+                }
+                if (Number(high) < 65 || Number(low) < 65) { 
+                    var image = ("<img src=\"scarf.png\">");
+                    insert_image(image);
+                }
+                if (main_weather == "Snow") { 
+                    var image = ("<img src=\"boots.png\">");
+                    insert_image(image);
+                }
+                if (Number(high) < 32 || Number(low) < 32) { 
+                    var image = ("<img src=\"mittens.png\">");
+                    insert_image(image);
+                }            
+                
             }
             content = new_heading.innerHTML;
             new_heading.innerHTML = content + "<p></p><p></p></div>";
