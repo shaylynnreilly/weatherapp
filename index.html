@@ -344,7 +344,7 @@
             var main = document.getElementById("main_page");
             var new_heading = document.getElementById("new_heading");
             var content = new_heading.innerHTML;
-            new_heading.innerHTML = content + "<br><p id=\"bold" + city + "\"><b></b></p><div id=\"forecast_list\">";
+            new_heading.innerHTML = content + "<br><p class=\"bold\" id=\"bold" + city + "\"><b></b></p><div id=\"forecast_list\">";
             main.innerHTML = "";
             for (var i = 1; i <= 5; i++) {
                 console.log(i);
