@@ -343,7 +343,7 @@
             var main = document.getElementById("main_page");
             var new_heading = document.getElementById("new_heading");
             var content = new_heading.innerHTML;
-            new_heading.innerHTML = content + "<br><p id=\"bold" + city + "\"><b>" + city + "'s 5 day forecast:</b></p><div id=\"forecast_list\">";
+            new_heading.innerHTML = content + "<br><p id=\"bold" + city + "\"><b></b></p><div id=\"forecast_list\">";
             main.innerHTML = "";
             for (var i = 1; i <= 5; i++) {
                 console.log(i);
@@ -386,7 +386,7 @@
             content = new_heading.innerHTML;
             new_heading.innerHTML = content + "<p></p><p></p></div>";
             var bold = document.getElementById("bold" + city);
-            bold.innerHTML = "<b>" + city + "'s forecast:</b>";
+            bold.innerHTML = "<b>" + city + "'s 5 day forecast:</b>";
             insert_button();
         }
         function weekday_convert(weekday) {
