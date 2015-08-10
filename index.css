@@ -246,7 +246,7 @@ a {
   #hrs, #mins {
   	width: 60px;
   }
-  #bold {
+  #bold, .bold {
  	font-size: 50px;
   }
   img {
