@@ -141,23 +141,23 @@
             //prints images into html
             if (condition == "Clear" && date < sunset && date > sunrise) {
                 var image = ("<img src=\"sunglasses.svg\">");
-                insert_image(image);
+                insert_image(image, "");
             }
             if (condition == "Rain") {
                 var image = ("<img src=\"umbrella.png\">");
-                insert_image(image);
+                insert_image(image, "");
             }
             if (Number(temp) < 65) { 
                 var image = ("<img src=\"scarf.png\">");
-                insert_image(image);
+                insert_image(image, "");
             }
             if (condition == "Snow") { 
                 var image = ("<img src=\"boots.png\">");
-                insert_image(image);
+                insert_image(image, "");
             }
             if (Number(temp) < 32) { 
                 var image = ("<img src=\"mittens.png\">");
-                insert_image(image);
+                insert_image(image, "");
             }
             var main = document.getElementById("main_page");
             var content = main.innerHTML;
@@ -177,23 +177,23 @@
                 //display images based on weather
                 if (condition == "Clear" && Number(date.getHours()) < 20 && Number(date.getHours()) > 5) {
                     var image = ("<img src=\"sunglasses.svg\">");
-                    insert_image(image);
+                    insert_image(image, "");
                 }
                 if (condition == "Rain") {
                     var image = ("<img src=\"umbrella.png\">");
-                    insert_image(image);
+                    insert_image(image, "");
                 }
                 if (Number(temp) < 65) { 
                     var image = ("<img src=\"scarf.png\">");
-                    insert_image(image);
+                    insert_image(image, "");
                 }
                 if (condition == "Snow") { 
                     var image = ("<img src=\"boots.png\">");
-                    insert_image(image);
+                    insert_image(image, "");
                 }
                 if (Number(temp) < 32) { 
                     var image = ("<img src=\"mittens.png\">");
-                    insert_image(image);
+                    insert_image(image, "");
                 }
             }
         }
@@ -275,8 +275,9 @@
         /*
          * inserts image into html
          */
-        function insert_image(image) {
-            var main = document.getElementById("images");
+        function insert_image(image, i) {
+            var element = "images" + i;
+            var main = document.getElementById(element);
             var content = main.innerHTML;
             if (content.indexOf(image) == -1) {
                 main.innerHTML = content + image;
@@ -357,26 +358,26 @@
                 var month = date.getMonth();
                 month = month_convert(month);
                 var day = date.getDate();
-                new_heading.innerHTML = content + "<p><u>" + month + " " + day + "</u><br/><div id=\"images\"></div><br/>" + condition + "<br>High: " + high + "°<br>Low: " + low + "°</p>";
+                new_heading.innerHTML = content + "<p><u>" + month + " " + day + "</u><br/><div id=\"images" + i + "\"></div><br/>" + condition + "<br>High: " + high + "°<br>Low: " + low + "°</p>";
                 if (main_weather == "Clear") {
                     var image = ("<img src=\"sunglasses.svg\">");
-                    insert_image(image);
+                    insert_image(image, i);
                 }
                 if (main_weather == "Rain") {
                     var image = ("<img src=\"umbrella.png\">");
-                    insert_image(image);
+                    insert_image(image, i);
                 }
                 if (Number(high) < 65 || Number(low) < 65) { 
                     var image = ("<img src=\"scarf.png\">");
-                    insert_image(image);
+                    insert_image(image, i);
                 }
                 if (main_weather == "Snow") { 
                     var image = ("<img src=\"boots.png\">");
-                    insert_image(image);
+                    insert_image(image, i);
                 }
                 if (Number(high) < 32 || Number(low) < 32) { 
                     var image = ("<img src=\"mittens.png\">");
-                    insert_image(image);
+                    insert_image(image, i);
                 }            
                 
             }
