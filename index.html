@@ -358,26 +358,26 @@
                 var month = date.getMonth();
                 month = month_convert(month);
                 var day = date.getDate();
-                new_heading.innerHTML = content + "<p><u>" + month + " " + day + "</u><br/><div id=\"images" + i + "\"></div><br/>" + condition + "<br>High: " + high + "°<br>Low: " + low + "°</p>";
+                new_heading.innerHTML = content + "<p><u>" + month + " " + day + "</u><br/><div id=\"images" + city + i + "\"></div><br/>" + condition + "<br>High: " + high + "°<br>Low: " + low + "°</p>";
                 if (main_weather == "Clear") {
                     var image = ("<img src=\"sunglasses.svg\">");
-                    insert_image(image, i);
+                    insert_image(image, city + i);
                 }
                 if (main_weather == "Rain") {
                     var image = ("<img src=\"umbrella.png\">");
-                    insert_image(image, i);
+                    insert_image(image, city + i);
                 }
                 if (Number(high) < 65 || Number(low) < 65) { 
                     var image = ("<img src=\"scarf.png\">");
-                    insert_image(image, i);
+                    insert_image(image, city + i);
                 }
                 if (main_weather == "Snow") { 
                     var image = ("<img src=\"boots.png\">");
-                    insert_image(image, i);
+                    insert_image(image, city + i);
                 }
                 if (Number(high) < 32 || Number(low) < 32) { 
                     var image = ("<img src=\"mittens.png\">");
-                    insert_image(image, i);
+                    insert_image(image, city + i);
                 }            
                 
             }
