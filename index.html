@@ -383,6 +383,8 @@
             }
             content = new_heading.innerHTML;
             new_heading.innerHTML = content + "<p></p><p></p></div>";
+            var bold = document.getElementById("bold");
+            bold.innerHTML = "<b>" + city + "'s forecast:</b>";
             insert_button();
         }
     </script>
