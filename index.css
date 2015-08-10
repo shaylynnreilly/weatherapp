@@ -77,8 +77,8 @@ body {
 /*elements before AJAX*/
 
 form {
-  margin-left: 50px;
-  margin-right: 50px;
+  	margin-left: 50px;
+  	margin-right: 50px;
 }
 
 input {
@@ -120,10 +120,10 @@ input {
   	top: -20px;
 }
 
-#bold {
+#bold, .bold {
   	font-size: 24px;
-  margin-bottom: 10px;
-  margin-top: -16px;
+  	margin-bottom: 10px;
+  	margin-top: -16px;
 }
 
 img {
@@ -139,34 +139,34 @@ img {
 }
 
 .main p {
-   margin-bottom: 10px;
-  margin-top: 5px;
-   text-align: center;
+   	margin-bottom: 10px;
+  	margin-top: 5px;
+   	text-align: center;
 }
 
 a {
-  text-decoration: none;
-  color: black;
-  padding: 10px;
+  	text-decoration: none;
+  	color: black;
+  	padding: 10px;
 }
 
 .button {
-  background-color: #eeeeee;
-  padding: 10px;
-  border-radius: 10px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 320px;
-  font-size: 30px;
-  text-align: center;
-  margin-bottom: 10px;
-  position: relative;
-  top: -65px;
+  	background-color: #eeeeee;
+  	padding: 10px;
+  	border-radius: 10px;
+  	margin-right: auto;
+  	margin-left: auto;
+  	width: 320px;
+  	font-size: 30px;
+  	text-align: center;
+  	margin-bottom: 10px;
+  	position: relative;
+  	top: -65px;
 }
 
 #new_heading {
-  text-align: center;
-  margin-top: 10px;
+  	text-align: center;
+  	margin-top: 10px;
 }
 
 /* smaller screen */
@@ -203,40 +203,40 @@ a {
 /* iphone 5 and larger */
 @media screen and (min-device-width: 320px) and (max-device-width: 667px) {
   .header {
-    height: 400px;
+    	height: 400px;
   }
   .header .container {
   	position: relative;
   	top: 50px;
   }
   .header h1 {
-    font-size: 150px;
-    line-height: 120px;
-    text-shadow: -2px 0 grey, 0 2px grey, 2px 0 grey, 0 -2px grey;
+    	font-size: 150px;
+    	line-height: 120px;
+    	text-shadow: -2px 0 grey, 0 2px grey, 2px 0 grey, 0 -2px grey;
   }
   .header h3 {
-    font-size: 50px;
-    line-height:40px;
+    	font-size: 50px;
+    	line-height:40px;
   }
   .main {
   	font-size: 50px;
   }
   #submit {
-    float: initial;
-    position: relative;
-    top: 60px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 60px;
-    text-align: center;
+    	float: initial;
+    	position: relative;
+    	top: 60px;
+    	margin-left: auto;
+    	margin-right: auto;
+    	font-size: 60px;
+    	text-align: center;
   }
   #submit2 {
   	float: initial;
-  	 margin-bottom: 140px;
-  	 margin-left: -343px;
-  	 font-size: 60px;
-  	 text-align: center;
-  	 position: relative;
+  	margin-bottom: 140px;
+  	margin-left: -343px;
+  	font-size: 60px;
+  	text-align: center;
+  	position: relative;
     	top: 60px;
   }
   input {
@@ -279,23 +279,23 @@ a {
 }
 
 @media screen and (min-device-width: 320px) and (max-device-height: 481px) {
-	.main p {
-		margin-top: 10px;
-		margin-bottom: 10px;
-	}
-	.header {
-		height: 350px;
-	}
-	.header .container {
-		position: relative;
-		top: 16px;
-	}
-	.header h3 {
-		margin-top: 15px;
-	}
-	.main {
-		position: relative;
-		top: -28px;
-		font-size: 45px;
-	}
+  .main p {
+	margin-top: 10px;
+	margin-bottom: 10px;
+  }
+  .header {
+  	height: 350px;
+  }
+  .header .container {
+	position: relative;
+	top: 16px;
+  }
+  .header h3 {
+ 	margin-top: 15px;
+  }
+  .main {
+	position: relative;
+	top: -28px;
+	font-size: 45px;
+  }
 }
