@@ -339,6 +339,7 @@
             new_heading.innerHTML = content + "<br><p id=\"bold\"><b>" + city + "'s 5 day forecast:</b></p><div id=\"forecast_list\">";
             main.innerHTML = "";
             for (var i = 1; i <= 5; i++) {
+                console.log(i);
                 var high = response.list[i].temp.max;
                 var low = response.list[i].temp.min;
                 var condition = response.list[i].weather[0].description;
@@ -350,7 +351,7 @@
                 var month = date.getMonth();
                 month = month_convert(month);
                 var day = date.getDate();
-                new_heading.innerHTML = content + "<p><u>" + month + " " + day + "</u><br/>" + condition + ", " + temp + "°</p>";
+                new_heading.innerHTML = content + "<p><u>" + month + " " + day + "</u><br/>" + condition + "<br>High: " + high + "°<br>Low: " + low + "°</p>";
             }
             content = new_heading.innerHTML;
             new_heading.innerHTML = content + "<p></p><p></p></div>";
