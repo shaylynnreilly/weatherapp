@@ -346,7 +346,7 @@
             var content = new_heading.innerHTML;
             new_heading.innerHTML = content + "<br><p class=\"bold\" id=\"bold" + city + "\"><b></b></p><div id=\"forecast_list\">";
             main.innerHTML = "";
-            for (var i = 1; i <= 5; i++) {
+            for (var i = 0; i <= 5; i++) {
                 console.log(i);
                 var high = response.list[i].temp.max;
                 var low = response.list[i].temp.min;
@@ -362,6 +362,8 @@
                 var weekday = date.getDay();
                 weekday = weekday_convert(weekday);
                 new_heading.innerHTML = content + "<p><u>" + weekday + ", " + month + " " + day + "</u><br/><div id=\"images" + city + i + "\"></div><br/>" + condition + "<br>High: " + high + "°<br>Low: " + low + "°</p>";
+                if (i == 0) 
+                    new_heading.innerHTML = content + "<p><u>Today</u><br/><div id=\"images" + city + i + "\"></div><br/>" + condition + "<br>High: " + high + "°<br>Low: " + low + "°</p>";
                 if (main_weather == "Clear") {
                     var image = ("<img src=\"sunglasses.svg\">");
                     insert_image(image, city + i);
