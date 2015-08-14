@@ -15,7 +15,38 @@
             destination = form.destination.value;
             hrs_gone = form.hrs.value;
             mins_gone = form.mins.value;
-            
+            //throw errors on input if necessary
+            check_input(current_location, destination, hrs_gone);
+            //add heading
+            var main = document.getElementById("main_page");
+            var content = "<p id=\"heading\">You're in " + capitalize(current_location);
+            if (destination != "")
+                content = content + " going to " + capitalize(destination);
+            content = content + " for " + hrs_gone + " hour";
+            if (hrs_gone != 1)
+                content = content + "s";
+            if (mins_gone != "")
+                content = content + " and " + mins_gone + " minutes";
+            content = content + "</p><p id=\"bold\"><b>Looks like you're all set!</b></p><div id=\"images\"></div>";
+            main.innerHTML= content;
+            //get hours to figure out how far into forecast you need
+            var d = new Date();
+            var hours = d.getHours() % 12;
+            mod_hours = Math.floor(((hours % 3) + Number(hrs_gone)) / 3);
+            //makes ajax requests for current weather
+            generate_current();
+            //makes ajax requests for future forecast if necessary
+            if (mod_hours >= 3) {
+                generate_forecast("false");
+            }
+            //inserts button at end of ajax execution
+            insert_button("second");
+        }
+        
+        /*
+         * throws errors on input if necessary
+         */ 
+        function check_input(current_location, destination, hrs_gone) {
             //lazy way to prevent xss
             var bs = "<";
             if (current_location.indexOf(bs) !== -1 || destination.indexOf(bs) !== -1 
@@ -23,8 +54,7 @@
                     alert("LOL nice try");
                     throw new Error("XSS caught");
             }
-            
-            //make sure essential parameters are there
+            //make sure essential parameters are there and will work
             if (current_location == "") {
                 alert("You need to put in where you are now");
                 throw new Error("no current location");
@@ -46,25 +76,12 @@
                 alert("That's too many hours");
                 throw new Error("hours > 5 days")
             }
-            
-            //add heading
-            var main = document.getElementById("main_page");
-            var content = "<p id=\"heading\">You're in " + capitalize(current_location);
-            if (destination != "")
-                content = content + " going to " + capitalize(destination);
-            content = content + " for " + hrs_gone + " hour";
-            if (hrs_gone != 1)
-                content = content + "s";
-            if (mins_gone != "")
-                content = content + " and " + mins_gone + " minutes";
-            content = content + "</p><p id=\"bold\"><b>Looks like you're all set!</b></p><div id=\"images\"></div>";
-            main.innerHTML= content;
-            
-            //get hours to figure out how far into forecast you need
-            var d = new Date();
-            var hours = d.getHours() % 12;
-            mod_hours = Math.floor(((hours % 3) + Number(hrs_gone)) / 3);
-            
+        }
+        
+        /* 
+         * generates forecast and calls different callback functions depending on why the forecast is being generated
+         */
+        function generate_current() {
             //request 1 = current location current weather
             request = new XMLHttpRequest;
             if (isNaN(Number(current_location)))
@@ -85,44 +102,8 @@
                 request2.open("GET", url2, true);
                 request2.send();
             }
-            //loops through forecast if necessary
-            if (mod_hours >= 3) {
-                generate_forecast("false");
-            }
-            insert_button("second");
         }
         
-        /* 
-         * generates forecast and calls different callback functions depending on why the forecast is being generated
-         */
-        function generate_forecast(button) {
-            //request 3 = current location future weather
-            request3 = new XMLHttpRequest;
-            if (isNaN(Number(current_location)))
-                var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
-            else
-                var url3 = "http://api.openweathermap.org/data/2.5/forecast?zip=" + current_location + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
-            if (button == "false")
-                request3.onload = get_forecast;
-            else 
-                request3.onload = print_forecast;
-            request3.open("GET", url3, true);
-            request3.send();
-            if (current_location != destination && destination != "") {
-                //request 4 = destination future weather
-                request4 = new XMLHttpRequest;
-                if (isNaN(Number(destination)))
-                    var url4 = "http://api.openweathermap.org/data/2.5/forecast?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
-                else
-                    var url4 = "http://api.openweathermap.org/data/2.5/forecast?zip=" + destination + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
-                if (button == "false")
-                    request4.onload = get_forecast;
-                else
-                    request4.onload = print_forecast;
-                request4.open("GET", url4, true);
-                request4.send();
-            }
-        }
         /*
          * gets current weather condition
          */
@@ -163,6 +144,35 @@
             var content = main.innerHTML;
             main.innerHTML = content + text;
         }
+        function generate_forecast(button) {
+            //request 3 = current location future weather
+            request3 = new XMLHttpRequest;
+            if (isNaN(Number(current_location)))
+                var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
+            else
+                var url3 = "http://api.openweathermap.org/data/2.5/forecast?zip=" + current_location + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+            if (button == "false")
+                request3.onload = get_forecast;
+            else 
+                request3.onload = print_forecast;
+            request3.open("GET", url3, true);
+            request3.send();
+            if (current_location != destination && destination != "") {
+                //request 4 = destination future weather
+                request4 = new XMLHttpRequest;
+                if (isNaN(Number(destination)))
+                    var url4 = "http://api.openweathermap.org/data/2.5/forecast?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
+                else
+                    var url4 = "http://api.openweathermap.org/data/2.5/forecast?zip=" + destination + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                if (button == "false")
+                    request4.onload = get_forecast;
+                else
+                    request4.onload = print_forecast;
+                request4.open("GET", url4, true);
+                request4.send();
+            }
+        }
+        
         /* 
          * gets future forecast for every 3 hours and prints image
          */
@@ -197,6 +207,7 @@
                 }
             }
         }
+        
         /*
          * Prints out actual forecast
          */
@@ -243,35 +254,7 @@
             new_heading.innerHTML = content + "<p></p><p></p></div>";
             insert_button();
         }
-        /* 
-         * converts number month to text
-         */
-        function month_convert(month) {
-            if (month == 0)
-                    return "January";
-                else if (month == 1)
-                    return "February";
-                else if (month == 2) 
-                    return "March";
-                else if (month == 3)
-                    return "April";
-                else if (month == 4)
-                    return "May";
-                else if (month == 5)
-                    return "June";
-                else if (month == 6)
-                    return "July";
-                else if (month == 7)
-                    return "August";
-                else if (month == 8)
-                    return "September";
-                else if (month == 9)
-                    return "October";
-                else if (month == 10)
-                    return "November";
-                else if (month == 11)
-                    return "December";
-        }
+        
         /*
          * inserts image into html
          */
@@ -286,6 +269,7 @@
             if (bold != null)
                 bold.innerHTML = "<b>Things you'll need:</b>";
         }
+        
         /* 
          * inserts return button that refreshes page
          */
@@ -297,12 +281,14 @@
             var body = document.getElementById("button_id");
             body.innerHTML = button;
         }
+        
         /*
          * capitalizes first letter in string s
          */
         function capitalize(s) {
             return s && s[0].toUpperCase() + s.slice(1);
         }
+        
         /*
          * gets five day forecast
          */
@@ -333,6 +319,7 @@
                 request2.send();
             }
         }
+        
         /*
          * prints five day forecast
          */
@@ -347,7 +334,6 @@
             new_heading.innerHTML = content + "<br><p class=\"bold\" id=\"bold" + city + "\"><b></b></p><div id=\"forecast_list\">";
             main.innerHTML = "";
             for (var i = 0; i <= 5; i++) {
-                console.log(i);
                 var high = response.list[i].temp.max;
                 var low = response.list[i].temp.min;
                 var condition = response.list[i].weather[0].description;
@@ -392,6 +378,40 @@
             bold.innerHTML = "<b>" + city + "'s 5 day forecast:</b>";
             insert_button();
         }
+        
+        /* 
+         * converts number month to text
+         */
+        function month_convert(month) {
+            if (month == 0)
+                    return "January";
+                else if (month == 1)
+                    return "February";
+                else if (month == 2) 
+                    return "March";
+                else if (month == 3)
+                    return "April";
+                else if (month == 4)
+                    return "May";
+                else if (month == 5)
+                    return "June";
+                else if (month == 6)
+                    return "July";
+                else if (month == 7)
+                    return "August";
+                else if (month == 8)
+                    return "September";
+                else if (month == 9)
+                    return "October";
+                else if (month == 10)
+                    return "November";
+                else if (month == 11)
+                    return "December";
+        }
+        
+        /*
+         * converts weekday number to text
+         */
         function weekday_convert(weekday) {
             if (weekday == 0) 
                 return "Sunday";
