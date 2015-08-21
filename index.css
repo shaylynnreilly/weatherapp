@@ -1,301 +1,315 @@
-/* elements in entire document */
-html, body {
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	font-family: 'Droid Sans', sans-serif;
-	font-weight: 100;
-}
-
-.container {
-	margin: 0 auto;
-	max-width: 940px; 
-	padding: 0 10px; 
-}
-
-/* Header */
-.header {
-  	height: 240px;
-  	text-align: center; 
-    	background-color: aliceblue;
-  	background: url("http://www.hgsitebuilder.com/files/writeable/uploads/hostgator131731/image/antum-grass-field-wallpapers.jpg") no-repeat center;
-  	-webkit-background-size: cover;
-  	-o-background-size: cover;
-  	background-size: cover;
-	text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
-}
-
-.header .container {
-	position: relative;
-	top: 10%;
-}
-
-.header h1 {
-	font-size: 60px;
-	line-height: 100px; 
-	margin-top: 0;
-	margin-bottom: 5px;
-  	color: white;
-	font-family: 'Muli', sans-serif;
-}
-
-.header h3 {
-  	margin-bottom: 10px;
-  	color: white;
-  	font-family: 'Muli', sans-serif;
-}
-
-.main .container {
-  	margin-top: 40px;
-  	margin-bottom: 80px;
-}
-
-.footer {
-  	background-color: #555555;
-  	height: 70px;
-  	position: fixed;
-  	bottom: 0;
-  	width: 100%;
-}
-
-.footer .container {
-  	margin-top: 12px;
-  	color: #fff;
-  	float: right;
-  	margin-right: 20px;
-}
-  .footer a {
-  	color: white;
-  	text-decoration: none;
-  }
-  .footer a:hover {
-  	color: beige;
-  	font-weight: bold;
-  }
-/*elements before AJAX*/
-
-form {
-  	margin-left: 50px;
-  	margin-right: 50px;
-}
-
-input {
-    	border: 0px;
-    	padding: 5px;
-    	background-color: #eeeeee;
-    	border-radius: 5px;
-    	margin-top: 4px;
-}
-
-#hrs, #mins {
-  	width: 25px;
-}
-
-#submit{
-  	float: right;
-  	font-size: 40px;
-  	position: relative;
-  	top: -110px;
-}
-
-#submit2 {
-  	float: right;
-  	font-size: 40px;
-  	position: relative;
-  	top: -60px;
-    left: 343px;
-}
-
-#submit:hover, #submit2:hover, .button:hover {
-  	background-color: beige;
-    opacity: 0.8;
-}
-
-/* elements after AJAX */
-#heading {
-  	text-align: center;
-  	position: relative;
-  	top: -20px;
-}
-
-#bold, .bold {
-  	font-size: 24px;
-  	margin-bottom: 10px;
-  	margin-top: -16px;
-}
-
-img {
-  	height: 100px;
-  	width: auto;
-  	margin-bottom: 15px;
-  	margin-right:auto;
-  	margin-left: auto;
-}
-
-#images {
-  	text-align: center;
-}
-
-.main p {
-   	margin-bottom: 10px;
-  	margin-top: 5px;
-   	text-align: center;
-}
-
-a {
-  	text-decoration: none;
-  	color: black;
-  	padding: 10px;
-}
-
-.button {
-  	background-color: #eeeeee;
-  	padding: 10px;
-  	border-radius: 10px;
-  	margin-right: auto;
-  	margin-left: auto;
-  	width: 320px;
-  	font-size: 30px;
-  	text-align: center;
-  	margin-bottom: 10px;
-  	position: relative;
-  	top: -65px;
-}
-
-#new_heading {
-  	text-align: center;
-  	margin-top: 10px;
-}
-
-/* smaller screen */
-@media screen and (max-width: 862px) {
-  	#submit, #button {
-    		float: initial
-    		position: relative;
-    		top: 40px;
-  	}
- 
-  	#submit2 {
-  		margin-bottom: 70px;
-      		float: initial;
-      		position: relative;
-      		top: 40px;
-      		margin-left: -44px;
-  	}
-  	#second {
-  		margin-bottom: 70px;
-  	}
-  	.header h1 {
-    		font-size: 50px;
-    		line-height: 40px;
-  	}
-  	.header {
-    		height: 160px;
-  	}
-  	#button {
-    		position: relative;
-    		top: 80px;
-  	}
-}
-
-/* iphone 5 and larger */
-@media screen and (min-device-width: 320px) and (max-device-width: 667px) {
-  .header {
-    	height: 400px;
-  }
-  .header .container {
-  	position: relative;
-  	top: 50px;
-  }
-  .header h1 {
-    	font-size: 150px;
-    	line-height: 120px;
-    	text-shadow: -2px 0 grey, 0 2px grey, 2px 0 grey, 0 -2px grey;
-  }
-  .header h3 {
-    	font-size: 50px;
-    	line-height:40px;
-  }
-  .main {
-  	font-size: 50px;
-  }
-  #submit {
-    	float: initial;
-    	position: relative;
-    	top: 60px;
-    	margin-left: auto;
-    	margin-right: auto;
-    	font-size: 60px;
-    	text-align: center;
-  }
-  #submit2 {
-  	float: initial;
-  	margin-bottom: 140px;
-  	margin-left: -343px;
-  	font-size: 60px;
-  	text-align: center;
-  	position: relative;
-    	top: 60px;
-  }
-  input {
-  	font-size: 50px;
-  	width: 600px;
-  }
-  #hrs, #mins {
-  	width: 60px;
-  }
-  #bold, .bold {
- 	font-size: 50px;
-  }
-  img {
-  	height: 200px;
-  }
-  #heading {
-  	margin-top: 100px;
-  }
-  .main p {
-  	margin-top: 20px;
-  	margin-bottom: 20px;
-  }
-  .button {
-  	font-size: 50px;
-  	margin-left: auto;
-  	margin-right: auto;
-  	margin-top: 30px;
-  	width: 460px;
-  }
-  .footer {
-  	font-size: 40px;
-  }
-  .footer a {
-  	position: relative;
-  	top: -34px;
-  }
-  #new_heading {
-  	font-size: 50px;
-  }
-}
-
-@media screen and (min-device-width: 320px) and (max-device-height: 481px) {
-  .main p {
-	margin-top: 10px;
-	margin-bottom: 10px;
-  }
-  .header {
-  	height: 350px;
-  }
-  .header .container {
-	position: relative;
-	top: 16px;
-  }
-  .header h3 {
- 	margin-top: 15px;
-  }
-  .main {
-	position: relative;
-	top: -28px;
-	font-size: 45px;
-  }
-}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MBTA</title>
+        <meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no" charset = "utf-8" />
+        <link rel="stylesheet" type="text/css" href="test.css">
+        <link rel="apple-touch-icon" href="T.png"/>
+        <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_qfmjBfmskPfrhZdBkLEoikxlUmXtQQU">
+        </script>
+        <script type="text/javascript">
+            var myLat = 0;
+            var myLng = 0;
+            var request;
+            var stops;
+            var text;
+            //my position
+            var me = new google.maps.LatLng(myLat, myLng);
+            var myOptions = {
+                        zoom: 17, // The larger the zoom number, the bigger the zoom
+                        center: me,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+            var map;
+            var marker;
+            var infowindow = new google.maps.InfoWindow();
+            var places;
+            
+            //initializes map
+            function init()
+            {
+                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+                map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(
+                    document.getElementById('legend'));
+                getMyLocation();
+            }
+            
+            //retrieves my location using geolocation
+            function getMyLocation()
+            {
+                if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        myLat = position.coords.latitude;
+                        myLng = position.coords.longitude;
+                        myLat = 42.3473;
+                        myLng = -71.0755;
+                        renderMap();
+                    });
+                }
+                else {
+                    alert("Geolocation is not supported by your web browser.");
+                }
+            }
+            //renders map with me as center and sends my data to datastore
+            function renderMap()
+            {
+                me = new google.maps.LatLng(myLat, myLng);
+                console.log(myLat + " " + myLng);
+                // Update map and go there...
+                map.panTo(me);
+                //pull data
+                request = new XMLHttpRequest(); 
+                request.onreadystatechange = dataReady;
+                url = "http://realtime.mbta.com/developer/api/v2/stopsbylocation?api_key=wX9NwuHnZU2ToO7GmGR9uw&lat=" + myLat + "&lon=" + myLng + "&format=json"
+                request.open("GET", url , true);
+                request.send();
+                // Create a marker
+                marker = new google.maps.Marker({
+                    position: me,
+                    title: "Me",
+                    //icon: "smiley.png",
+                });
+                marker.setMap(map);
+                // Open info window on click of marker
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.setContent(marker.title);
+                    infowindow.open(map, marker);
+                });
+                legend = document.getElementById("legend");
+                legend_content = "<center><b>Legend</b><br/>(click to close)</center><br/><div class=\"legend\" style='background-color:red; color:white; padding:2px'>Red line</div><br/><div class=\"legend\" style='background-color:orange; color:white; padding:2px'>Orange line</div><br/><div class=\"legend\" style='background-color:green; color:white; padding:2px'>Green line</div><br/><div class=\"legend\" style='background-color:blue; color:white; padding:2px'>Blue line</div><br/><div class=\"legend\" style='background-color:purple; color:white; padding:2px'>Commuter Rail</div><br/><div class=\"legend\" style='background-color:silver; color:white; padding:2px'>Silver line</div><br/><div class=\"legend\" style='background-color:black; color:white; padding:2px'>Busses</div><br/><span style='color:green'>12:00pm</span>: predicted arrival<br/><span>12:00pm</span>: scheduled arrival<br/><br/>Click on any route to see full route<br/>Click on any line to remove it";
+                google.maps.event.addDomListener(legend, 'click', function () {
+                    if (legend.innerHTML.indexOf("click to open") != -1)
+                    	legend.innerHTML = legend_content;
+                    else
+                    	legend.innerHTML = "<center><b>Legend</b><br/>(click to open)</center>";
+	    	    //infowindow.open(map, legend);
+	    	});
+            }
+            //gets data & calls functions to make markers
+            function dataReady() {
+                if (request.readyState == 4 && request.status == 200) {
+                    response = JSON.parse(request.responseText);
+                    stops = response.stop;
+                    for (i = 0; i < stops.length; i++) {
+                      stop = stops[i];
+                      if (stop.parent_station == "")
+                        plotStation(stop);
+                    }
+                }
+            }
+            function plotStation(stop) {
+                //gets station's position
+                pos = new google.maps.LatLng(stop.stop_lat, stop.stop_lon);
+                // Create a marker
+                var stop_marker = new google.maps.Marker({
+                    position: pos,
+                    title: stop.stop_name,
+                    //icon: "tiny-t.png",
+                });
+                stop_marker.setMap(map);
+                // Open info window on click of marker
+                google.maps.event.addListener(stop_marker, 'click', function() {
+                request2 = new XMLHttpRequest(); 
+                request2.onreadystatechange = getRoutes;
+                url2 = "http://realtime.mbta.com/developer/api/v2/predictionsbystop?api_key=wX9NwuHnZU2ToO7GmGR9uw&stop=" + stop.stop_id + "&format=json";
+		if (stop.parent_station != "") {
+		    url2 = "http://realtime.mbta.com/developer/api/v2/predictionsbystop?api_key=wX9NwuHnZU2ToO7GmGR9uw&stop=" + stop.parent_station + "&format=json";
+		}
+                request2.open("GET", url2 , true);
+                request2.send();
+                //allows time for request to go through
+                current_time = new Date();
+                current_hour = current_time.getHours();
+                if (current_hour == 0 || current_hour == 12) 
+                    current_mod_hour = 12;
+                else 
+                    current_mod_hour = current_hour % 12;
+                if (current_hour >= 12)
+                    current_stamp = "pm";
+                else
+                    current_stamp = "am";
+                current_minutes = current_time.getMinutes();
+                if (current_minutes < 10)
+                    current_minutes = "0" + current_minutes;
+                setTimeout(function(){
+                    request3 = new XMLHttpRequest();
+                    request3.onreadystatechange = getSchedule;
+                    url3 = "http://realtime.mbta.com/developer/api/v2/schedulebystop?api_key=wX9NwuHnZU2ToO7GmGR9uw&stop=" + stop.stop_id + "&format=json";
+		    if (stop.parent_station != "") {
+			url3 = "http://realtime.mbta.com/developer/api/v2/schedulebystop?api_key=wX9NwuHnZU2ToO7GmGR9uw&stop=" + stop.parent_station + "&format=json";
+		    }
+                    request3.open("GET", url3, true);
+                    request3.send();
+                }, 600);
+                setTimeout(function(){
+                content = "<p><b style='font-size:20px'>" + stop.stop_name + "</b><br>Current time: " + current_mod_hour + ":" + current_minutes + current_stamp + "</p>" + text;
+                    infowindow.setContent(content);
+                    infowindow.open(map, stop_marker);
+                }, 1000);
+                });
+            }
+            function parse_JSON(response, schedule) {
+                modes = response.mode;
+                for (x = 0; x < modes.length; x++) {
+                    text = text + "<p id=\"" + modes[x].mode_name + "\">";
+                    routes = modes[x].route;
+                    for (y = 0; y < routes.length; y++) {
+                        if (schedule == "false" || (schedule == "true" && text.indexOf(routes[y].route_name) == -1)) {
+                            console.log(routes[y].route_name);
+                            text = text + "<span onclick='full_route(\"" + routes[y].route_id + "\", \"" + routes[y].route_name + "\")' style='cursor:pointer;font-weight:bold;line-height:18px;padding:2px;color:white;background-color:";
+                            if (routes[y].route_name == "Red Line")
+                                text = text + "red'>";
+                            else if (routes[y].route_name.indexOf("Green Line") != -1)
+                                text = text + "green'>";
+                            else if (routes[y].route_name == "Orange Line")
+                        	text = text + "orange'>";
+                    	    else if (routes[y].route_name == "Blue Line")
+                        	text = text + "blue'>";
+                            else if (routes[y].route_name.indexOf("Silver Line") != -1)
+                        	text = text + "silver'>";
+                    	    else if (modes[x].mode_name == "Commuter Rail")
+                        	text = text + "purple'>";
+                    	    else 
+                        	text = text + "black'>";
+                    	    text = text + routes[y].route_name + "</span>";                 
+                    	    directions = routes[y].direction;
+                    	    for (z = 0; z < directions.length; z++) {
+                        	if (directions[z].trip[0].trip_headsign != undefined)
+                                    text = text + "<br>To " + directions[z].trip[0].trip_headsign + ": ";
+                        	else {
+                            	    if (routes[y].route_name == "Green Line B") {
+                                	if (directions[z].direction_name == "Westbound")
+                                	    direction_name = "To Boston College";
+                                	if (directions[z].direction_name == "Eastbound")
+                                	    direction_name = "To Park Street";
+                            	    }
+                            	    else if (routes[y].route_name == "Green Line C") {
+                                        if (directions[z].direction_name == "Westbound")
+                                	    direction_name = "To Cleveland Circle";
+                                        if (directions[z].direction_name == "Eastbound")
+                                	    direction_name = "To North Station";
+                            	    }
+                            	    else if (routes[y].route_name == "Green Line D") {
+                                        if (directions[z].direction_name == "Westbound")
+                                	    direction_name = "To Riverside";
+                                        if (directions[z].direction_name == "Eastbound")
+                                 	    direction_name = "To Park Street";
+                            	    }
+                            	    else if (routes[y].route_name == "Green Line E") {
+                                        if (directions[z].direction_name == "Westbound")
+                                	    direction_name = "To Heath Street";
+                                        if (directions[z].direction_name == "Eastbound")
+                                	    direction_name = "To Lechmere";
+                            	    }
+                            	    else
+                                         direction_name = directions[z].direction_name;
+                                    text = text + "<br>" + direction_name + ": ";
+                        	}
+                                trips = directions[z].trip;
+                                for (w = 0; w < trips.length && w < 5; w++) {
+                            	    date = new Date(trips[w].sch_arr_dt * 1000);
+                            	    if (date.getTime() >= current_time.getTime()) {
+                                        hour = date.getHours();
+                                        if (hour == 0 || hour == 12) 
+                                            mod_hour = 12;
+                                        else 
+                                            mod_hour = hour % 12;
+                                        if (hour >= 12)
+                                            stamp = "pm";
+                                        else
+                                            stamp = "am";
+                                        minutes = date.getMinutes();
+                                        if (minutes < 10)
+                                            minutes = "0" + minutes; 
+                                        if (schedule == "false")
+                                            text = text + "<span style='color:green'><blink>";
+                                        text = text + mod_hour + ":" + minutes + stamp;
+                                        if (schedule == "false")
+                                            text = text + "</span></blink>";
+                                                if (w != trips.length - 1 && w != 4)
+                                                    text = text + ", ";
+                            	    }
+                                }
+                            }
+                            text = text + "<br><br>";
+                    }
+                    text = text + "</p>";
+                }
+            }
+        }
+        function getRoutes() {
+            if (this.readyState == 4 && this.status == 200) {
+                text = "";
+                route_response = JSON.parse(this.responseText);
+                parse_JSON(route_response, "false");
+            }
+        }
+        function getSchedule() {
+            if (this.readyState == 4 && this.status == 200) {
+                schedule_response = JSON.parse(this.responseText);
+                parse_JSON(schedule_response, "true");
+            } 
+        }
+        function full_route(route_plot, full_name) {
+	    full_route_name = full_name;
+            request4 = new XMLHttpRequest;
+            request4.onreadystatechange = plotRoute;
+            url4 = ("http://realtime.mbta.com/developer/api/v2/stopsbyroute?api_key=wX9NwuHnZU2ToO7GmGR9uw&route=" + route_plot + "&format=json");
+            request4.open("GET", url4, true);
+            request4.send();
+        }
+        function plotRoute () {
+            if (this.readyState == 4 && this.status == 200) {
+                response4 = JSON.parse(this.responseText);
+                var all_stops = response4.direction[0];
+                infowindow.close();
+                var route_array = [];
+                for (var c = 0; c < all_stops.stop.length; c++) {
+		    if (full_route_name != all_stops.stop.route_name)
+                    	plotStation(all_stops.stop[c]);
+                    var latlong = new google.maps.LatLng(all_stops.stop[c].stop_lat, all_stops.stop[c].stop_lon);
+                    route_array.push(latlong);
+                }
+                var linecolor = "";
+                    if (full_route_name == "Red Line")
+                        linecolor = "#FF0000";
+                    else if (full_route_name.indexOf("Green Line") != -1)
+                        linecolor = "#009933";
+                    else if (full_route_name == "Orange Line")
+                        linecolor = "#FF6600";
+                    else if (full_route_name == "Blue Line")
+                        linecolor = "#0000FF";
+                    else if (full_route_name.indexOf("Silver Line") != -1)
+                        linecolor = "#C0C0C0";
+                    else if (full_route_name.indexOf("Line") != -1)
+                        linecolor = "#800080";
+                    else 
+                        linecolor = "#000000";
+                var route_path = new google.maps.Polyline({
+                    path: route_array,
+                    strokeColor: linecolor,
+                    strokeWeight: 2
+                });
+                route_path.setMap(map);
+                google.maps.event.addListener(route_path, 'click', function() {
+                    route_path.setMap(null);
+                });
+            }
+        }
+	function toggle_visibility() {
+       	    var element = document.getElementById("body");
+            element.innerHTML = "<div id='map_canvas'></div>";
+            init();
+        }
+        </script>
+    </head>
+    <body onload ="init()" id="body">
+        <div id="map_canvas">
+        </div>
+        <div id="legend">
+            <center><b>Legend</b><br/>
+	    (click to open)</center>
+        </div>
+    </body>
+</html>
