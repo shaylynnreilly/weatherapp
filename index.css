@@ -289,7 +289,7 @@
                 var route_path = new google.maps.Polyline({
                     path: route_array,
                     strokeColor: linecolor,
-                    strokeWeight: 2
+                    strokeWeight: 3
                 });
                 route_path.setMap(map);
                 google.maps.event.addListener(route_path, 'click', function() {
