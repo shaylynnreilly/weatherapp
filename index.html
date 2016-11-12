@@ -9,6 +9,7 @@
         /* 
          * main function
          */
+        var API_key = 'b30c3b579698c852057d19a83a5bc4ca';
         function execute(form) {
             //assign variables
             current_location = form.current_location.value;
@@ -85,9 +86,9 @@
             //request 1 = current location current weather
             request = new XMLHttpRequest;
             if (isNaN(Number(current_location)))
-                var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                var url = "http://api.openweathermap.org/data/2.5/weather?q=" + current_location + "&appid=" + API_key + "&format=JSON&units=Imperial";
             else
-                var url = "http://api.openweathermap.org/data/2.5/weather?zip=" + current_location + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                var url = "http://api.openweathermap.org/data/2.5/weather?zip=" + current_location + ",us&appid=" + API_key + "&format=JSON&units=Imperial";
             request.onload = get_current;
             request.open("GET", url, true);
             request.send();
@@ -95,9 +96,9 @@
                 //request 2 = destination current weather
                 request2 = new XMLHttpRequest;
                 if (isNaN(Number(destination)))
-                    var url2 = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                    var url2 = "http://api.openweathermap.org/data/2.5/weather?q=" + destination + "&appid=" + API_key + "&format=JSON&units=Imperial";
                 else
-                    var url2 = "http://api.openweathermap.org/data/2.5/weather?zip=" + destination + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                    var url2 = "http://api.openweathermap.org/data/2.5/weather?zip=" + destination + ",us&appid=" + API_key + "&format=JSON&units=Imperial";
                 request2.onload = get_current;
                 request2.open("GET", url2, true);
                 request2.send();
@@ -148,9 +149,9 @@
             //request 3 = current location future weather
             request3 = new XMLHttpRequest;
             if (isNaN(Number(current_location)))
-                var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
+                var url3 = "http://api.openweathermap.org/data/2.5/forecast?q=" + current_location + "&appid=" + API_key + "&units=Imperial";
             else
-                var url3 = "http://api.openweathermap.org/data/2.5/forecast?zip=" + current_location + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                var url3 = "http://api.openweathermap.org/data/2.5/forecast?zip=" + current_location + ",us&appid=" + API_key + "&format=JSON&units=Imperial";
             if (button == "false")
                 request3.onload = get_forecast;
             else 
@@ -161,9 +162,9 @@
                 //request 4 = destination future weather
                 request4 = new XMLHttpRequest;
                 if (isNaN(Number(destination)))
-                    var url4 = "http://api.openweathermap.org/data/2.5/forecast?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&units=Imperial";
+                    var url4 = "http://api.openweathermap.org/data/2.5/forecast?q=" + destination + "&appid=" + API_key + "&units=Imperial";
                 else
-                    var url4 = "http://api.openweathermap.org/data/2.5/forecast?zip=" + destination + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                    var url4 = "http://api.openweathermap.org/data/2.5/forecast?zip=" + destination + ",us&appid=" + API_key + "&format=JSON&units=Imperial";
                 if (button == "false")
                     request4.onload = get_forecast;
                 else
@@ -301,9 +302,9 @@
             }
             request = new XMLHttpRequest;
             if (isNaN(Number(current_location)))
-                var url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + current_location + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                var url = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + current_location + "&appid=" + API_key + "&format=JSON&units=Imperial";
             else
-                var url = "http://api.openweathermap.org/data/2.5/forecast/daily?zip=" + current_location + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                var url = "http://api.openweathermap.org/data/2.5/forecast/daily?zip=" + current_location + ",us&appid=" + API_key + "&format=JSON&units=Imperial";
             request.onload = get_five_day;
             request.open("GET", url, true);
             request.send();
@@ -311,9 +312,9 @@
                 //request 2 = destination current weather
                 request2 = new XMLHttpRequest;
                 if (isNaN(Number(destination)))
-                    var url2 = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + destination + "&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                    var url2 = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + destination + "&appid=" + API_key + "&format=JSON&units=Imperial";
                 else
-                    var url2 = "http://api.openweathermap.org/data/2.5/forecast/daily?zip=" + destination + ",us&APIID=b30c3b579698c852057d19a83a5bc4ca&format=JSON&units=Imperial";
+                    var url2 = "http://api.openweathermap.org/data/2.5/forecast/daily?zip=" + destination + ",us&appid=" + API_key + "&format=JSON&units=Imperial";
                 request2.onload = get_five_day;
                 request2.open("GET", url2, true);
                 request2.send();
