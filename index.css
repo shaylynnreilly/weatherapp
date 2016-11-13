@@ -83,6 +83,7 @@ input {
 #submit:hover, #submit2:hover, .button:hover {
   	background-color: beige;
     opacity: 0.8;
+	text-decoration: none;
 }
 
 /* elements after AJAX */
