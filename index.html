@@ -2,6 +2,13 @@
 <html>
 <head>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <!-- bootstrap & dependencies -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel ="stylesheet" type="text/css" href="index.css"/>
     <link rel="apple-touch-icon" href="sun.png"/>
     <title>Weather</title>
@@ -275,9 +282,11 @@
          * inserts return button that refreshes page
          */
         function insert_button(second){
-            var button = "<div class='button' id='first'><a href='http://shaylynnreilly.github.io/weatherapp'>Let's try again</a></div>";
             if (second == "second") {
-                button = button + "<div class='button' id='second' onClick='generate_forecast()'>Get " + hrs_gone + " hour forecast</div>";
+                button = "<div class='button' id='first'><a href='http://shaylynnreilly.github.io/weatherapp'>Let's try again</a></div><div class='button' id='second' onClick='generate_forecast()'>Get " + hrs_gone + " hour forecast</div>";
+            }
+            else {
+                button = "<div class='button' id='second'><a href='http://shaylynnreilly.github.io/weatherapp'>Let's try again</a></div>";
             }
             var body = document.getElementById("button_id");
             body.innerHTML = button;
@@ -432,34 +441,40 @@
     </script>
 </head>
 <body>
-    <div class="header">
-        <div class="container">
-            <h1>Weathering the weather</h1>
-            <h3>Helping you prepare for the worst</h3>
-        </div>
+    <div class="jumbotron">
     </div>
     <div id="new_heading">
     </div>
     <div class="main">
         <div class="container" id="main_page">
             <form>
-                <br/>Where are you now?
-                <input type="text" name="current_location" class="cityinput" placeholder="Enter your city or zip code">
-                <br/>Where are you going?
-                <input type="text" name="destination" class="cityinput" placeholder="Optional">
-                <br/>How long will you be gone?
-                <input type="text" name="hrs" id="hrs" value="0"> hours <input type="text" name="mins" id="mins"> minutes
-                <br/>
-                <input type="button" name="submit" id="submit" Value="Tell me what I need" onClick="execute(this.form);">
-                <br/><input type="button" name="submit_forecast" id="submit2" value="Get 5 day forecast" onClick="five_day(this.form);">
+                <div class="row">
+                    <div class="form group">
+                    <div class="col-md-6 text-center">
+                        <br/>Where are you now?
+                        <input type="text" name="current_location" class="cityinput" placeholder="City or zip code">
+                        <br/>Where are you going?
+                        <input type="text" name="destination" class="cityinput" placeholder="(Optional)">
+                        <br/>How long will you be gone?
+                        <input type="text" name="hrs" id="hrs" value="0"> hours <input type="text" name="mins" id="mins" value="0"> minutes
+                        <br/>
+                        <br/>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <input type="button" class="button" name="submit" id="submit" Value="Tell me what I need" onClick="execute(this.form);">
+                        <br/><input type="button" class="button" name="submit_forecast" id="submit2" value="Get 5 day forecast" onClick="five_day(this.form);">
+                    </div>
+                    </div>
+                </div>
             </form>
+
         </div>
     </div>
     <div id="button_id"></div>
-    <div class="footer">
-        <div class="container">
-            <p><a href="http://shaylynnreilly.github.io">Shaylynn Reilly</a></p>
-        </div>
-    </div>
+    <footer class="container-fluid bg-4 text-center" id="footer">
+        <br/>
+        <p><a href="http://shaylynnreilly.github.io">Shaylynn Reilly</a></p>        
+    </footer>
+ 
 </body>
 </html>
