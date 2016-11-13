@@ -230,9 +230,13 @@
             var content = new_heading.innerHTML;
             new_heading.innerHTML = content + "<br><p id=\"bold\"><b>" + city + "'s forecast:</b></p><div id=\"forecast_list\">";
             main.innerHTML = "";
+            console.log(response);
             for (var i = 0; i <= count; i++) {
                 var temp = response.list[i].main.temp;
                 var condition = response.list[i].weather[0].description;
+                var main_weather = response.list[i].weather[0].main;
+                var high = response.list[i].main.temp_max;
+                var low = response.list[i].main.temp_min;
                 //gets EST time from london time
                 var EST_time = (Number(response.list[i].dt)) * 1000; 
                 var date = new Date(EST_time);
@@ -256,7 +260,24 @@
                 if (hour == 0) {
                     hour = 12;
                 }
-                new_heading.innerHTML = content + "<p><u>" + month + " " + day + ", " + hour + " " + stamp + "</u><br/>" + condition + ", " + temp + "°</p>";
+                var image = "";
+                if (main_weather == "Clear") {
+                    image = image + ("<img src=\"sunglasses.svg\">");
+                }
+                if (main_weather == "Rain") {
+                    image = image + ("<img src=\"umbrella.png\">");
+                }
+                if (Number(high) < 60 || Number(low) < 50) { 
+                    image = image + ("<img src=\"scarf.png\">");
+                }
+                if (main_weather == "Snow") { 
+                    image = image + ("<img src=\"boots.png\">");
+                }
+                if (Number(high) < 32 || Number(low) < 32) { 
+                    image = image + ("<img src=\"mittens.png\">");
+                }   
+                new_heading.innerHTML = content + "<p><u>" + month + " " + day + ", " + hour + " " + stamp + "</u><br/>" + condition + ", " + temp + "°</p>" + image;
+ 
             }
             content = new_heading.innerHTML;
             new_heading.innerHTML = content + "<p></p><p></p></div>";
